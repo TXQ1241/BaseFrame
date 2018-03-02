@@ -10,6 +10,7 @@
     <!--配置注解控制器映射器,它是SpringMVC中用来将具体请求映射到具体方法-->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 
+	<!-- 配置扫描的包 -->
     <context:component-scan base-package="cn.com.BaseFrame.*" use-default-filters="false">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
