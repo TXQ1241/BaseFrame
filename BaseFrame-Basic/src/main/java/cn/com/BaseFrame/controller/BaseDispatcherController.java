@@ -10,6 +10,7 @@ import java.io.Serializable;
  **/
 public class BaseDispatcherController implements Serializable{
     //把jsp存放在一个单独的model,然后根据classpath去查找对应的jsp
+    //提交测试
     private String path = "";
 
     //返回到jsp页面
