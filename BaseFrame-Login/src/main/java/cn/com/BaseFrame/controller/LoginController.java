@@ -32,7 +32,8 @@ public class LoginController extends BaseController {
     @RequestMapping(value = "/loginHandler", method = RequestMethod.GET)
     @ResponseBody
     public String loginHandler(HttpServletRequest request, HttpServletResponse response) {
-        //直接跳转到对应的jsp
+        //直接跳转到对应的jsp,返回登录页面
+
         BaseResultModel resultModel = invokeMethod(LoginService.class,"login",new BaseParamModel());
 
         return resultModel.toString();
