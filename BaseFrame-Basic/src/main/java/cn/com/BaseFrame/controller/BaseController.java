@@ -1,4 +1,4 @@
-package cn.com.BaseFrame.controller.impl;
+package cn.com.BaseFrame.controller;
 
 import cn.com.BaseFrame.BaseUtils.BeanUtils.BeanUtils;
 import cn.com.BaseFrame.pojo.BaseParamModel;
