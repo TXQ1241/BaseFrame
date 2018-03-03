@@ -1,0 +1,3 @@
+cn\com\BaseFrame\service\impl\LoginService.class
+cn\com\BaseFrame\controller\LoginController.class
+cn\com\BaseFrame\service\ILoginService.class

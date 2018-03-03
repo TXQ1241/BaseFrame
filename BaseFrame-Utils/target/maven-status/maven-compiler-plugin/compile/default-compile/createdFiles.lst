@@ -1,0 +1,4 @@
+cn\com\BaseFrame\BaseUtils\DateUtils\DateUtils.class
+cn\com\BaseFrame\BaseUtils\FileUtils\FileUtils.class
+cn\com\BaseFrame\BaseUtils\BeanUtils\BeanUtils.class
+cn\com\BaseFrame\BaseUtils\StringUtils\StringUtils.class
