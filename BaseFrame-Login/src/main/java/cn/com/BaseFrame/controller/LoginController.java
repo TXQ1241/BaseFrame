@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 @Controller
 @RequestMapping("/Login")
@@ -30,9 +33,10 @@ public class LoginController extends BaseController {
      **/
     @RequestMapping(value = "/loginHandler", method = RequestMethod.GET)
     @ResponseBody
-    public String loginHandler() {
-        System.out.print("hello my first ssm project");
+    public String loginHandler(HttpServletRequest request, HttpServletResponse response) {
+        //直接跳转到对应的jsp
         BaseResultModel resultModel = invokeMethod(LoginService.class,"login",new BaseParamModel());
+
         return resultModel.toString();
     }
 

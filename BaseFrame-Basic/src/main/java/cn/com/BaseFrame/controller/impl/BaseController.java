@@ -3,10 +3,6 @@ package cn.com.BaseFrame.controller.impl;
 import cn.com.BaseFrame.BaseUtils.BeanUtils.BeanUtils;
 import cn.com.BaseFrame.pojo.BaseParamModel;
 import cn.com.BaseFrame.pojo.BaseResultModel;
-import cn.com.BaseFrame.service.IBaseService;
-import cn.com.BaseFrame.service.impl.BaseService;
-
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -16,8 +12,8 @@ import java.lang.reflect.Method;
  * @create 2018-02-23 22:18
  **/
 public class BaseController extends BaseDispatcherController {
-    public BaseResultModel invokeMethod(Class clazz, String methodName, BaseParamModel paramModel){
 
+    public BaseResultModel invokeMethod(Class clazz, String methodName, BaseParamModel paramModel){
         //获取到实体类
         Object object = BeanUtils.getBean(clazz);
 
