@@ -33,10 +33,12 @@ public class LoginController extends BaseController {
     @ResponseBody
     public String loginHandler(HttpServletRequest request, HttpServletResponse response) {
         //直接跳转到对应的jsp,返回登录页面
+        return "login";
+    }
 
-        BaseResultModel resultModel = invokeMethod(LoginService.class,"login",new BaseParamModel());
-
-        return resultModel.toString();
+    public String executeLogin(HttpServletRequest request,HttpServletResponse response) {
+        invokeMethod(LoginService.class,"executeLogin",new BaseParamModel(),request,response);
+        return ""; //返回到主页
     }
 
 }

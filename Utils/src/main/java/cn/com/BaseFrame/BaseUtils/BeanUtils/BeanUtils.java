@@ -25,7 +25,19 @@ public class BeanUtils implements Serializable{
      *  @exception InstantiationException,IllegalAccessException
      **/
     public static Object getBean(Class clazz){
-        return compare(target,clazz);
+        return compare(target,clazz,true); //默认为true
+    }
+    /**
+     *  @Description: 获取到类的实例化.flag为true表示为单例
+     *  @author xyh
+     *  @Date 16:47 2018/3/5
+     *  @method 
+     *  params  
+     *  @return 
+     *  @exception 
+     **/
+    public static Object getBean(Class clazz,boolean flag) {
+        return compare(target,clazz,flag);
     }
 
     /**
@@ -37,23 +49,23 @@ public class BeanUtils implements Serializable{
      *  @return 实例化对象
      *  @exception 
      **/
-    public static Object compare(Object target,Class clazz) {
+    public static Object compare(Object target,Class clazz,boolean flag) {
         String className = clazz.getName();
         //判断这个对象是不是已经存在,如果存在,那么返回,不存在则新建对象
         try {
-            if (target != null) {
-                if (className.equals(target.getClass().getName())) {
-                    return target;
-                } else {
-                    //判断是不是同一个对象,是则返回
-                    if(clazz.isInterface()) {
-                        //如果是接口,返回接口的实现类
-                        throw new RuntimeException("需要传递一个class而非一个interface");
-                    }else {
-                        return clazz.newInstance();
+            if(clazz.isInterface()) {
+                //如果是接口,返回接口的实现类
+                throw new RuntimeException("需要传递一个class而非一个interface");
+            }else {
+                if(flag) {
+                    //表明是单例
+                    if (target != null) {
+                        if (className.equals(target.getClass().getName())) {
+                            return target;
+                        }
                     }
+                    return clazz.newInstance();
                 }
-            }else{
                 return clazz.newInstance();
             }
         } catch(Exception e){
