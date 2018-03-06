@@ -26,6 +26,7 @@ public class EncapsulationContext implements HandlerInterceptor {
         //String UUID = (String)session.getAttribute("UUID");
         String UUID = "123";
         if(UUID != null && !"".equals(UUID)) {
+
             return true;
         }else {
             //如果没有登录,就返回到登录的页面
