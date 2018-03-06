@@ -1,4 +1,4 @@
-package cn.com.BaseFrame.controller;
+package cn.com.BaseFrame.Controller;
 
 import java.io.Serializable;
 

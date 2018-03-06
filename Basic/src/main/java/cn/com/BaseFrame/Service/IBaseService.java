@@ -1,4 +1,4 @@
-package cn.com.BaseFrame.service;
+package cn.com.BaseFrame.Service;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package cn.com.BaseFrame.pojo.constant;
+package cn.com.BaseFrame.Pojo.constant;
 
 /**
  * 常量类,定义一系列常量

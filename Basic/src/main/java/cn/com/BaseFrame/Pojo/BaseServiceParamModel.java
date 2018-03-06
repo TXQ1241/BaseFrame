@@ -1,7 +1,6 @@
-package cn.com.BaseFrame.pojo;
+package cn.com.BaseFrame.Pojo;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
 
 /**
  * 基础参数类

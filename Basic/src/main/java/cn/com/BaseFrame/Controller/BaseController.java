@@ -1,13 +1,9 @@
-package cn.com.BaseFrame.controller;
+package cn.com.BaseFrame.Controller;
 
 import cn.com.BaseFrame.BaseUtils.BeanUtils.BeanUtils;
-import cn.com.BaseFrame.pojo.BaseControllerContext;
-import cn.com.BaseFrame.pojo.BaseServiceParamModel;
-import cn.com.BaseFrame.pojo.BaseServiceResultModel;
-import cn.com.BaseFrame.pojo.constant.Constant;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import cn.com.BaseFrame.Pojo.BaseControllerContext;
+import cn.com.BaseFrame.Pojo.BaseServiceParamModel;
+import cn.com.BaseFrame.Pojo.BaseServiceResultModel;
 import java.lang.reflect.Method;
 
 /**

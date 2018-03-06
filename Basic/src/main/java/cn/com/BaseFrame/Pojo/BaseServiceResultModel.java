@@ -1,6 +1,4 @@
-package cn.com.BaseFrame.pojo;
-
-import java.io.Serializable;
+package cn.com.BaseFrame.Pojo;
 
 /**
  * 基础返回类

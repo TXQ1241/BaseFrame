@@ -6,13 +6,12 @@ package cn.com.BaseFrame.Login;
  * @create 2018-02-22 13:08
  **/
 import cn.com.BaseFrame.Login.impl.LoginService;
-import cn.com.BaseFrame.controller.BaseController;
-import cn.com.BaseFrame.pojo.BaseControllerContext;
-import cn.com.BaseFrame.pojo.BaseServiceParamModel;
+import cn.com.BaseFrame.Controller.BaseController;
+import cn.com.BaseFrame.Pojo.BaseControllerContext;
+import cn.com.BaseFrame.Pojo.BaseServiceParamModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
