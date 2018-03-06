@@ -1,11 +1,10 @@
 package cn.com.BaseFrame.controller;
 
 import cn.com.BaseFrame.BaseUtils.BeanUtils.BeanUtils;
-import cn.com.BaseFrame.pojo.BaseParamModel;
-import cn.com.BaseFrame.pojo.BaseResultModel;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import cn.com.BaseFrame.pojo.BaseControllerContext;
+import cn.com.BaseFrame.pojo.BaseServiceParamModel;
+import cn.com.BaseFrame.pojo.BaseServiceResultModel;
+
 import java.lang.reflect.Method;
 
 /**
@@ -30,40 +29,50 @@ public class BaseController extends BaseDispatcherController {
      *
      */
 
-    public BaseResultModel invokeMethod(Class clazz, String methodName, BaseParamModel paramModel, HttpServletRequest request, HttpServletResponse response){
+    public BaseServiceResultModel invokeMethod(Class clazz, String methodName, BaseServiceParamModel paramModel, BaseControllerContext context){
         //获取到需要执行方法的实体类
         Object object = BeanUtils.getBean(clazz);
 
-        //用户在登录成功之后,把数据库的配置取出来,存放进session中
-
+        beforeInvoke();
 
         try {
             //获取到对应的方法
             Method method = clazz.getMethod(methodName,paramModel.getClass());
 
-            BaseResultModel resultModel = (BaseResultModel) method.invoke(object,paramModel);
+            BaseServiceResultModel resultModel = (BaseServiceResultModel) method.invoke(object,paramModel);
 
-            /**
-             * 由于session中存放的是配置表里面的值,不会发生变,所以不用刷新session的值
-             *      如果改了其他数据库的值,那么直接通过数据库的flushSession刷新即可
-             */
+            afterInvoke();
 
             return resultModel;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }
+    
 
-    public boolean checkRole(HttpServletRequest request,HttpServletResponse response) {
-        /*
-         * 当用户通过地址或者页面上的某一个按钮进入到登录的页面时，不创建Session
-         *      在用户点击登录那个按钮时创建Session
-         */
-        request.getSession();
-        ServletContext context = request.getSession().getServletContext();
-
-        //不存在
-
-        return true;
+    /**
+     *  @Description: 在方法调用之前执行
+     *  @author xyh
+     *  @Date 22:57 2018/3/5
+     *  @method beforeInvoke
+     *  params  
+     *  @return 
+     *  @exception 
+     **/
+    public void beforeInvoke() {
+    
+    }
+    
+    /**
+     *  @Description: 在方法调用之后执行
+     *  @author xyh
+     *  @Date 22:57 2018/3/5
+     *  @method afterInvoke
+     *  params  
+     *  @return 
+     *  @exception 
+     **/
+    public void afterInvoke() {
+        
     }
 }
