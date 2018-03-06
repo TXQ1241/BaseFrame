@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/Login")
 public class LoginController extends BaseController {
     /**
+     *  提交测试
      *  @Description: 跳转到登录页面
      *  @author xyh
      *  @Date 17:21 2018/2/23
