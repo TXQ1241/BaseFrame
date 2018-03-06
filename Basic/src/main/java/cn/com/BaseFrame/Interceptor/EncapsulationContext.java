@@ -1,14 +1,13 @@
 package cn.com.BaseFrame.Interceptor;
 
-import cn.com.BaseFrame.BaseUtils.BeanUtils.BeanUtils;
 import cn.com.BaseFrame.pojo.BaseControllerContext;
-import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.UUID;
+import java.lang.reflect.Method;
 
 /**
  * 封装BaseControllerContext的拦截器
@@ -16,7 +15,7 @@ import java.util.UUID;
  * @author xyh
  * @create 2018-03-05 23:25
  **/
-public class EncapsulationContext implements HandlerInterceptor {
+public class EncapsulationContext extends HandlerInterceptorAdapter {
 
     /**
      *  @Description: 在进入Handler方法之前执行,判断是否登录.
@@ -30,14 +29,37 @@ public class EncapsulationContext implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
         String UUID = (String)session.getAttribute("UUID");
-        if(UUID == null || "".equals(UUID)) {
-            BaseControllerContext context = new BaseControllerContext(request,session,session.getServletContext());
-            request.setAttribute("context",context);
+        UUID = "123";
+        if(UUID != null && !"".equals(UUID)) {
+            /**
+             * 一个类Class1和另一个类Class2是否相同或是另一个类的子类或接口。
+             *      判断handler和HandlerMethod是否相同,或者handler是不是HandlerMethod的子类或者接口
+             */
+            if(handler.getClass().isAssignableFrom(HandlerMethod.class)) {
+                //强转
+                HandlerMethod handlerMethod = (HandlerMethod)handler;
+
+
+                //获取到要执行的方法
+                Method method = handlerMethod.getMethod();
+
+                //要执行方法的参数
+                Class[] ParameterTypes = method.getParameterTypes();
+
+                //获取到参数的类
+                Class clazz = ParameterTypes[0];
+
+                if("BaseControllerContext".equals(clazz.getName())) {
+                    //就把这个对象实例化,然后传递过去
+                    BaseControllerContext context = (BaseControllerContext) clazz.getConstructor(clazz).newInstance(request,session,session.getServletContext());
+
+                }
+            }
             return true;
         }else {
             //如果没有登录,就返回到登录的页面
-            //request.getRequestDispatcher("/login.jsp").forward(request,response);
-            return true;
+            request.getRequestDispatcher("/login.jsp").forward(request,response);
+            return false;
         }
 
 
@@ -57,6 +79,7 @@ public class EncapsulationContext implements HandlerInterceptor {
          *  在进入方法之后,返回页面之前执行
          *      其实就是在controller里面的方法执行完毕,在return之前执行
          */
+        System.out.print(handler.toString());
     }
 
     /**

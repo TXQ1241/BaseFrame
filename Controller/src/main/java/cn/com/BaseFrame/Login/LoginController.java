@@ -12,6 +12,7 @@ import cn.com.BaseFrame.pojo.BaseServiceParamModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -32,6 +33,7 @@ public class LoginController extends BaseController {
     @ResponseBody
     public String loginHandler(BaseControllerContext context) {
         //直接跳转到对应的jsp,返回登录页面
+        System.out.print("login------------------**********");
         return "login";
     }
 

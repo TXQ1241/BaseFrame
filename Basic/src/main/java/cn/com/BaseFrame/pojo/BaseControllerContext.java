@@ -2,6 +2,7 @@ package cn.com.BaseFrame.pojo;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -29,9 +30,9 @@ public class BaseControllerContext {
     }
 
     public BaseControllerContext(HttpServletRequest request, HttpSession session, ServletContext context) {
+        this.request = request;
         this.session = session;
         this.context = context;
-        this.request = request;
     }
 
     //里面只提供get方法,不提供set方法
@@ -39,10 +40,7 @@ public class BaseControllerContext {
         return session;
     }
 
-    public ServletContext getContext() {
-
-        return context;
-    }
+    public ServletContext getContext() { return context; }
 
     public HttpServletRequest getRequest() {
         return request;

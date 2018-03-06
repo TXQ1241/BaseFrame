@@ -4,7 +4,10 @@ import cn.com.BaseFrame.BaseUtils.BeanUtils.BeanUtils;
 import cn.com.BaseFrame.pojo.BaseControllerContext;
 import cn.com.BaseFrame.pojo.BaseServiceParamModel;
 import cn.com.BaseFrame.pojo.BaseServiceResultModel;
+import cn.com.BaseFrame.pojo.constant.Constant;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 /**
@@ -39,16 +42,18 @@ public class BaseController extends BaseDispatcherController {
             //获取到对应的方法
             Method method = clazz.getMethod(methodName,paramModel.getClass());
 
-            BaseServiceResultModel resultModel = (BaseServiceResultModel) method.invoke(object,paramModel);
+            /**
+             *  执行service中的方法
+             */
+            BaseServiceResultModel srModel = (BaseServiceResultModel) method.invoke(object,paramModel);
 
             afterInvoke();
 
-            return resultModel;
+            return srModel;
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }
-    
 
     /**
      *  @Description: 在方法调用之前执行
@@ -73,6 +78,6 @@ public class BaseController extends BaseDispatcherController {
      *  @exception 
      **/
     public void afterInvoke() {
-        
+
     }
 }
