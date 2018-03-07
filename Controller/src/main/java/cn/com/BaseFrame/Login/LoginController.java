@@ -33,15 +33,12 @@ public class LoginController extends BaseController {
     @RequestMapping(value = "/loginHandler", method = RequestMethod.GET)
     @ResponseBody
     public String loginHandler(HttpServletRequest request, HttpServletResponse response) {
-
-
         return "login";
     }
 
     public String executeLogin(HttpServletRequest request, HttpServletResponse response) {
         LoginServiceParamModel spModel = this.getSpModel(request,LoginServiceParamModel.class);
         invokeMethod(LoginService.class,"executeLogin",new BaseServiceParamModel());
-
         return ""; //返回到主页
     }
 
