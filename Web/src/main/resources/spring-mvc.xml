@@ -19,13 +19,13 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <mvc:interceptors>
-        <!-- 多个拦截器，顺序执行 -->
+<!--    <mvc:interceptors>
+        &lt;!&ndash; 多个拦截器，顺序执行 &ndash;&gt;
         <mvc:interceptor>
-            <!-- /** 表示所有的url，包括子url路径 -->
+            &lt;!&ndash; /** 表示所有的url，包括子url路径 &ndash;&gt;
             <mvc:mapping path="/**"/>
             <bean class="cn.com.BaseFrame.Interceptor.EncapsulationContext"></bean>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
 
 </beans>
