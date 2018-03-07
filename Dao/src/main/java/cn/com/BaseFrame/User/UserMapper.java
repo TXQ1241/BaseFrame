@@ -24,5 +24,5 @@ public interface UserMapper {
      * @param user 用户对象
      * @return 用户集合
      */
-    List getUsers(User user);
+    List<User> getUsers(User user);
 }

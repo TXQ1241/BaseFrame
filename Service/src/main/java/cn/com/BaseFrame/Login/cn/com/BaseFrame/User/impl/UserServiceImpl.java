@@ -14,9 +14,10 @@ import java.util.List;
 public class UserServiceImpl implements IUserService {
 
     @Autowired
+    @Qualifier("userMapper")
     UserMapper userMapper;
 
-    public List getUsers(User user) {
+    public List<User> getUsers(User user) {
         return userMapper.getUsers(user);
     }
 
