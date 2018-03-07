@@ -16,6 +16,7 @@
         <module>Service</module>
         <module>Dao</module>
         <module>Web</module>
+        <module>Api</module>
     </modules>
 
     <properties>
