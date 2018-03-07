@@ -7,12 +7,14 @@ package cn.com.BaseFrame.Login;
  **/
 import cn.com.BaseFrame.Login.impl.LoginService;
 import cn.com.BaseFrame.Controller.BaseController;
-import cn.com.BaseFrame.Pojo.BaseControllerContext;
+import cn.com.BaseFrame.Login.pojo.LoginServiceParamModel;
 import cn.com.BaseFrame.Pojo.BaseServiceParamModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 @Controller
@@ -30,14 +32,16 @@ public class LoginController extends BaseController {
      **/
     @RequestMapping(value = "/loginHandler", method = RequestMethod.GET)
     @ResponseBody
-    public String loginHandler(BaseControllerContext context) {
-        //直接跳转到对应的jsp,返回登录页面
-        System.out.print("login------------------**********");
+    public String loginHandler(HttpServletRequest request, HttpServletResponse response) {
+
+
         return "login";
     }
 
-    public String executeLogin(BaseControllerContext context) {
-        invokeMethod(LoginService.class,"executeLogin",new BaseServiceParamModel(),context);
+    public String executeLogin(HttpServletRequest request, HttpServletResponse response) {
+        LoginServiceParamModel spModel = this.getSpModel(request,LoginServiceParamModel.class);
+        invokeMethod(LoginService.class,"executeLogin",new BaseServiceParamModel());
+
         return ""; //返回到主页
     }
 

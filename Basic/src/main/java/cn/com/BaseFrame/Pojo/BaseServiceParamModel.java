@@ -11,11 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 public class BaseServiceParamModel extends BaseControllerContext{
     private HttpServletRequest request;
 
+
     public BaseServiceParamModel() {
         super();
     }
 
     public HttpServletRequest getRequest() {
        return super.getRequest();
+    }
+
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
     }
 }

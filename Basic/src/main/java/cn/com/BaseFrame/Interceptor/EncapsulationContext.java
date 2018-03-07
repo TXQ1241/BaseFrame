@@ -23,10 +23,8 @@ public class EncapsulationContext implements HandlerInterceptor {
      *  @exception
      **/
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //String UUID = (String)session.getAttribute("UUID");
-        String UUID = "123";
+        String UUID = (String)request.getSession().getAttribute("UUID");
         if(UUID != null && !"".equals(UUID)) {
-
             return true;
         }else {
             //如果没有登录,就返回到登录的页面
@@ -51,7 +49,6 @@ public class EncapsulationContext implements HandlerInterceptor {
          *  在进入方法之后,返回页面之前执行,这个方法一定会执行Controller里面的内容,所以在上面不能去执行,只能设置好BaseControllerContext
          *      其实就是在controller里面的方法执行完毕,在return之前执行
          */
-        System.out.print(handler.toString());
     }
 
     /**

@@ -1,10 +1,15 @@
 package cn.com.BaseFrame.Controller;
 
 import cn.com.BaseFrame.BaseUtils.BeanUtils.BeanUtils;
+import cn.com.BaseFrame.BaseUtils.StringUtils.StringUtils;
 import cn.com.BaseFrame.Pojo.BaseControllerContext;
 import cn.com.BaseFrame.Pojo.BaseServiceParamModel;
 import cn.com.BaseFrame.Pojo.BaseServiceResultModel;
+
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * controller基础类
@@ -22,13 +27,12 @@ public class BaseController extends BaseDispatcherController {
      *
      *      2.在方法执行前要进行哪些判断
      *          A.判断用户是否有权限执行该方法
-     *              如何判断,在数据库里面进行配置,然后再session中取值
+     *              只接从Redis缓存中取值
      *
-     *          B.用户是不是直接通过url直接来访问,跳过了登录这一步
      *
      */
 
-    public BaseServiceResultModel invokeMethod(Class clazz, String methodName, BaseServiceParamModel paramModel, BaseControllerContext context){
+    public BaseServiceResultModel invokeMethod(Class clazz, String methodName, BaseServiceParamModel paramModel){
         //获取到需要执行方法的实体类
         Object object = BeanUtils.getBean(clazz);
 
@@ -75,5 +79,48 @@ public class BaseController extends BaseDispatcherController {
      **/
     public void afterInvoke() {
 
+    }
+
+    public <T extends BaseServiceParamModel> T getSpModel(HttpServletRequest request,Class<T> clazz) {
+        /**
+         *  这里就需要把request传递过来的参数封装到spModel里面
+         */
+        try {
+            if(clazz.isAssignableFrom(BaseServiceParamModel.class)) {
+                //获取到类中的属性
+                Field[] fields = clazz.getFields();
+
+                //创建一个实例化对象
+                T t = clazz.newInstance();
+                t.setRequest(request);
+
+                //获取到request中的所有参数
+                Map<String, Object> parameterMap = request.getParameterMap();
+
+                if (fields != null && fields.length > 0) {
+                    for(Field field : fields) {
+
+                        String fieldName = field.getName(); //获取到属性的名称
+
+                        if(parameterMap.containsKey(fieldName)) {
+                            String methodName = "set" + StringUtils.subString(fieldName);
+
+                            Method method = clazz.getMethod(methodName,field.getType()); //获取到方法对象
+
+                            method.invoke(t,parameterMap.get(fieldName));//执行赋值
+                        }else {
+                            continue;
+                        }
+                    }
+                    return t;
+                }else {
+                    return clazz.newInstance();
+                }
+            }else {
+                throw new RuntimeException("传递的不是一个BaseServiceParamModel");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
