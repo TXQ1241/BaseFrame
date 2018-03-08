@@ -1,18 +1,22 @@
-package cn.com.BaseFrame.Login.cn.com.BaseFrame.User.impl;
+package cn.com.BaseFrame.User.impl;
 
-import cn.com.BaseFrame.Login.cn.com.BaseFrame.User.inter.IUserService;
+import cn.com.BaseFrame.Api.User.UserMapper;
+import cn.com.BaseFrame.User.IUserService;
 import cn.com.BaseFrame.User.User;
-import cn.com.BaseFrame.User.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+/**
+ * @author xyh
+ * @create 2018-03-08 10:57
+ **/
 @Service("userService")
 @Transactional
-public class UserServiceImpl implements IUserService {
-
+public class UserService implements IUserService {
     @Autowired
     @Qualifier("userMapper")
     UserMapper userMapper;

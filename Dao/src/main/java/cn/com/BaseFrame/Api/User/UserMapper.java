@@ -1,8 +1,7 @@
-package cn.com.BaseFrame.User;
+package cn.com.BaseFrame.Api.User;
 
 import cn.com.BaseFrame.User.User;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository("userMapper")
