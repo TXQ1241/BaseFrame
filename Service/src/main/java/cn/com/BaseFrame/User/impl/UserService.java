@@ -1,6 +1,6 @@
 package cn.com.BaseFrame.User.impl;
 
-import cn.com.BaseFrame.Api.User.UserMapper;
+import cn.com.BaseFrame.User.UserMapper;
 import cn.com.BaseFrame.User.IUserService;
 import cn.com.BaseFrame.User.User;
 import org.springframework.beans.factory.annotation.Autowired;

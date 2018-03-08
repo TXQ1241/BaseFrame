@@ -1,4 +1,4 @@
-package cn.com.BaseFrame.Api.User;
+package cn.com.BaseFrame.User;
 
 import cn.com.BaseFrame.User.User;
 import org.springframework.stereotype.Repository;
