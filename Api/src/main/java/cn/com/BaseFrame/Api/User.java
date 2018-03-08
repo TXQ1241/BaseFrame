@@ -1,4 +1,4 @@
-package cn.com.BaseFrame.User;
+package cn.com.BaseFrame.Api;
 
 import java.util.Date;
 

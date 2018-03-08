@@ -1,5 +1,6 @@
 package cn.com.BaseFrame.User;
 
+import cn.com.BaseFrame.Api.User;
 import java.util.List;
 
 /**

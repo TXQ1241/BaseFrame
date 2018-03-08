@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.com.BaseFrame.User.UserMapper" >
-    <resultMap id="BaseResultMap" type="cn.com.BaseFrame.User.User" >
+<mapper namespace="cn.com.BaseFrame.Api.UserMapper" >
+    <resultMap id="BaseResultMap" type="cn.com.BaseFrame.Api.User" >
         <id column="id" property="id" jdbcType="VARCHAR" />
         <result column="account" property="account" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
@@ -33,7 +33,7 @@
         delete from user
         where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="cn.com.BaseFrame.User.User" >
+    <insert id="insert" parameterType="cn.com.BaseFrame.Api.User" >
         insert into user (id, account, password,
         name, age, email, avatar,
         profession, description, qq_num,
@@ -47,7 +47,7 @@
         #{expDate,jdbcType=DATE}, #{birthday,jdbcType=DATE}, #{phoneNum,jdbcType=VARCHAR}
         )
     </insert>
-    <insert id="insertSelective" parameterType="cn.com.BaseFrame.User.User" >
+    <insert id="insertSelective" parameterType="cn.com.BaseFrame.Api.User" >
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -150,7 +150,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="cn.com.BaseFrame.User.User" >
+    <update id="updateByPrimaryKeySelective" parameterType="cn.com.BaseFrame.Api.User" >
         update user
         <set >
             <if test="account != null" >
@@ -201,7 +201,7 @@
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="cn.com.BaseFrame.User.User" >
+    <update id="updateByPrimaryKey" parameterType="cn.com.BaseFrame.Api.User" >
         update user
         set account = #{account,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR},
@@ -222,7 +222,7 @@
     </update>
 
     <!-- 通过用户对象获取用户列表 -->
-    <select id="getUsers" resultType="cn.com.BaseFrame.User.User" parameterType="cn.com.BaseFrame.User.User" >
+    <select id="getUsers" resultType="cn.com.BaseFrame.Api.User" parameterType="cn.com.BaseFrame.Api.User" >
         select
         <include refid="Base_Column_List" />
         from user

@@ -52,7 +52,7 @@
         <!-- 配置Mybatis的核心 配置文件所在位置 -->
         <property name="configLocation" value="classpath:SqlMapConfig.xml" />
         <!-- 配置pojo别名 -->
-        <property name="mapperLocations" value="classpath:cn/com/BaseFrame/**/*.xml"></property>
+        <property name="mapperLocations" value="classpath*:cn/com/BaseFrame/**/*.xml"></property>
     </bean>
 
     <!-- 配置 1：原始Dao开发 接口实现类 Mapper.xml 三个 2：接口开发 接口 不写实现类 Mapper.xml 二个 （UserDao、ProductDao
