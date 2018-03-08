@@ -1,13 +1,12 @@
 package cn.com.BaseFrame.User.impl;
 
-import cn.com.BaseFrame.User.UserMapper;
+import cn.com.BaseFrame.Api.User;
+import cn.com.BaseFrame.Api.UserMapper;
 import cn.com.BaseFrame.User.IUserService;
-import cn.com.BaseFrame.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 /**
