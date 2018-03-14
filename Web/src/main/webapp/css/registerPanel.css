@@ -1,0 +1,27 @@
+.register-panel {
+  padding-top: 20px; }
+  .register-panel .logo-content {
+    width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 20px; }
+    .register-panel .logo-content .logo-box .text-img {
+      margin-left: 20px; }
+      .register-panel .logo-content .logo-box .text-img span {
+        line-height: 34px;
+        font-size: 24px;
+        color: #333;
+        padding-left: 20px;
+        vertical-align: bottom; }
+      .register-panel .logo-content .logo-box .text-img img {
+        vertical-align: bottom; }
+    .register-panel .logo-content .logo-box .right-text {
+      margin-top: 40px; }
+  .register-panel .line {
+    height: 1px;
+    background-color: #999999; }
+  .register-panel .main-box {
+    margin-top: 20px; }
+    .register-panel .main-box .main-content {
+      width: 1000px;
+      height: 100%;
+      margin: 0 auto; }

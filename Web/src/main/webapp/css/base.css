@@ -12,7 +12,8 @@ body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dt, dd {
 
 a {
   text-decoration: none;
-  color: #666; }
+  color: #666;
+  cursor: pointer; }
 
 a:hover {
   color: #e4393c; }
@@ -31,5 +32,3 @@ s, i {
 button {
   outline: none;
   border: 0 none; }
-
-/*# sourceMappingURL=base.css.map */

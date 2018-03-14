@@ -1,0 +1,49 @@
+@import 'default';
+@import 'mixin';
+
+.register-panel {
+    padding-top: 20px;
+
+    .logo-content {
+        width: $default-register-width;
+        margin: 0 auto;
+        padding-bottom: 20px;
+
+        .logo-box {
+            .text-img {
+                margin-left: 20px;
+
+                span {
+                    line-height: 34px;
+                    font-size: 24px;
+                    color: #333;
+                    padding-left: 20px;
+                    vertical-align: bottom;
+                }
+
+                img {
+                    vertical-align: bottom;
+                }
+            }
+
+            .right-text {
+                margin-top: 40px;
+            }
+        }
+    }
+
+    .line {
+        height: 1px;
+        background-color: $default-border-color;
+    }
+
+    .main-box {
+        margin-top: 20px;
+
+        .main-content {
+            width: $default-register-width;
+            height: 100%;
+            margin: 0 auto;
+        }
+    }
+}
