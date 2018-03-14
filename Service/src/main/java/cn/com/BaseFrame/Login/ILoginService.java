@@ -3,6 +3,7 @@ package cn.com.BaseFrame.Login;
 import cn.com.BaseFrame.Pojo.BaseServiceParamModel;
 import cn.com.BaseFrame.Pojo.BaseServiceResultModel;
 import cn.com.BaseFrame.Service.IBaseService;
+
 /**
  * 登录的service接口
  *

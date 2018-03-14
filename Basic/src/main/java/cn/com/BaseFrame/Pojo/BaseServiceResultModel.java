@@ -6,6 +6,6 @@ package cn.com.BaseFrame.Pojo;
  * @author xyh
  * @create 2018-02-23 22:16
  **/
-public class BaseServiceResultModel extends BaseControllerContext{
+public class BaseServiceResultModel extends BaseControllerContext {
 
 }

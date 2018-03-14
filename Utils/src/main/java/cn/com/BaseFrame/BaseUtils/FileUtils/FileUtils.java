@@ -8,6 +8,6 @@ import java.io.Serializable;
  * @author xyh
  * @create 2018-02-22 15:18
  **/
-public class FileUtils implements Serializable{
+public class FileUtils implements Serializable {
 
 }

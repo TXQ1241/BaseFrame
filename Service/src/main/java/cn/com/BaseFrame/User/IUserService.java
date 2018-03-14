@@ -1,6 +1,7 @@
 package cn.com.BaseFrame.User;
 
 import cn.com.BaseFrame.Api.User;
+
 import java.util.List;
 
 /**
@@ -10,6 +11,7 @@ import java.util.List;
 public interface IUserService {
     /**
      * 获取用户列表
+     *
      * @param user 用户对象
      * @return 用户集合
      */

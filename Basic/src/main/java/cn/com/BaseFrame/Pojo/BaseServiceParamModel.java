@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author xyh
  * @create 2018-02-23 22:15
  **/
-public class BaseServiceParamModel extends BaseControllerContext{
+public class BaseServiceParamModel extends BaseControllerContext {
     private HttpServletRequest request;
 
 
@@ -17,7 +17,7 @@ public class BaseServiceParamModel extends BaseControllerContext{
     }
 
     public HttpServletRequest getRequest() {
-       return super.getRequest();
+        return super.getRequest();
     }
 
     public void setRequest(HttpServletRequest request) {

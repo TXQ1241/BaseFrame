@@ -2,6 +2,7 @@ package cn.com.BaseFrame.Interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,21 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 public class EncapsulationContext implements HandlerInterceptor {
 
     /**
-     *  @Description: 在进入Handler方法之前执行,判断是否登录.
-     *  @author xyh
-     *  @Date 23:26 2018/3/5
-     *  @method
-     *  params
-     *  @return
-     *  @exception
+     * @return
+     * @throws
+     * @Description: 在进入Handler方法之前执行, 判断是否登录.
+     * @author xyh
+     * @Date 23:26 2018/3/5
+     * @method params
      **/
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String UUID = (String)request.getSession().getAttribute("UUID");
-        if(UUID != null && !"".equals(UUID)) {
+        String UUID = (String) request.getSession().getAttribute("UUID");
+        if (UUID != null && !"".equals(UUID)) {
             return true;
-        }else {
+        } else {
             //如果没有登录,就返回到登录的页面
-            request.getRequestDispatcher("/login.jsp").forward(request,response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
             return false;
         }
 
@@ -36,13 +36,12 @@ public class EncapsulationContext implements HandlerInterceptor {
     }
 
     /**
-     *  @Description: 进入Handler方法之后，返回ModelAndView之前执行
-     *  @author xyh
-     *  @Date 23:27 2018/3/5
-     *  @method
-     *  params
-     *  @return
-     *  @exception
+     * @return
+     * @throws
+     * @Description: 进入Handler方法之后，返回ModelAndView之前执行
+     * @author xyh
+     * @Date 23:27 2018/3/5
+     * @method params
      **/
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         /**
@@ -52,13 +51,12 @@ public class EncapsulationContext implements HandlerInterceptor {
     }
 
     /**
-     *  @Description: 在执行Handler完成后执行此方法，使用于统一的异常处理
-     *  @author xyh
-     *  @Date 23:27 2018/3/5
-     *  @method
-     *  params
-     *  @return
-     *  @exception
+     * @return
+     * @throws
+     * @Description: 在执行Handler完成后执行此方法，使用于统一的异常处理
+     * @author xyh
+     * @Date 23:27 2018/3/5
+     * @method params
      **/
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         /**

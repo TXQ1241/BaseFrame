@@ -20,7 +20,11 @@
     <!-- redis.properties文件在spring-redis,xml中被引用 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-mybatis.xml</param-value>
+        <param-value>
+            classpath:spring-mybatis.xml,
+            classpath:spring-mvc.xml,
+            classpath:spring-cxf.xml
+        </param-value>
     </context-param>
 
     <filter>
@@ -39,6 +43,7 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -51,15 +56,23 @@
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring-mvc.xml</param-value>
-        </init-param>
     </servlet>
+
+    <servlet>
+        <servlet-name>CXF</servlet-name>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CXF</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

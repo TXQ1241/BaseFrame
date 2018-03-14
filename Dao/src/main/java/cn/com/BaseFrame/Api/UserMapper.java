@@ -1,6 +1,7 @@
 package cn.com.BaseFrame.Api;
 
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Repository("userMapper")
@@ -19,6 +20,7 @@ public interface UserMapper {
 
     /**
      * 获取用户集合
+     *
      * @param user 用户对象
      * @return 用户集合
      */

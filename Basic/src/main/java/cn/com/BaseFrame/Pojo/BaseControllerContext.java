@@ -13,12 +13,12 @@ import javax.servlet.http.HttpSession;
 public class BaseControllerContext {
     /**
      * 这个类是基础类,里面封装context、session、request
-     *      注意 :
-     *          1.这个类在什么时候创建?
-     *              在通过url访问的时候,就可以直接创建一个BaseModel对象,但是里面的所有值为空
-     *          2.类是单例还是有多个?
-     *
-     *          3.里面的request保存的是一个,还是多个?
+     * 注意 :
+     * 1.这个类在什么时候创建?
+     * 在通过url访问的时候,就可以直接创建一个BaseModel对象,但是里面的所有值为空
+     * 2.类是单例还是有多个?
+     * <p>
+     * 3.里面的request保存的是一个,还是多个?
      */
     private HttpServletRequest request;
     private HttpSession session;
@@ -39,7 +39,9 @@ public class BaseControllerContext {
         return session;
     }
 
-    public ServletContext getContext() { return context; }
+    public ServletContext getContext() {
+        return context;
+    }
 
     public HttpServletRequest getRequest() {
         return request;

@@ -8,6 +8,6 @@ import java.io.Serializable;
  * @author xyh
  * @create 2018-02-22 12:40
  **/
-public interface IBaseService extends Serializable{
+public interface IBaseService extends Serializable {
 
 }

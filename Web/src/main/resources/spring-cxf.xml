@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- START SNIPPET: beans -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation=" http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <!-- 配置详解 :
+            1.serviceClass : 这个是定义WebService对应java接口，直接指定接口位置，在接口上需要添加@WebService注解。
+
+            2.address : 这个是指定访问地址，这里需要参考web.xml的servlet配置
+
+                <servlet-mapping>
+                    <servlet-name>CXF</servlet-name>
+                    <url-pattern>/services/*</url-pattern>
+                </servlet-mapping>
+              以/hello为例,那么方位的地址就是 : http://localhost:8080/项目名称/services/hello?wsdl
+
+            3.ref bean="webServiceTest"
+                这里有一个地方需要注意,就是bean的名称,在编写接口的实现类的时候,需要在上面添加@Component注解
+                    以WebServiceTest为例,那么注解就是 : @Component("webServiceTest")
+                        这里使用的就是byName来进行注解,默认的是类的首字母小写,然后进行注解,所以这里的beanName需要和类的首字母小姐相同
+
+            4.如果说有多个接口怎么办?
+                那就需要配置多个jaxws:server标签,一个标签对应一个WebService的接口服务。
+     -->
+    <jaxws:server address="/hello" serviceClass="cn.com.BaseFrame.WebService.IWebServiceTest">
+        <jaxws:serviceBean>
+            <!-- 项目中使用@Component 注解来完成IOC容器的装配 -->
+            <ref bean="webServiceTest"/>
+        </jaxws:serviceBean>
+    </jaxws:server>
+
+</beans>

@@ -8,5 +8,5 @@ import cn.com.BaseFrame.Pojo.BaseServiceResultModel;
  * @author xyh
  * @create 2018-03-07 10:50
  **/
-public class LoginServiceResultModel extends BaseServiceResultModel{
+public class LoginServiceResultModel extends BaseServiceResultModel {
 }
