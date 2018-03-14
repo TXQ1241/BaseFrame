@@ -8,8 +8,5 @@ import javax.jws.WebService;
  **/
 @WebService
 public class IWebServiceTest {
-    public void sayHello() {
-    }
-
-    ;
+    public void sayHello() {};
 }
