@@ -8,10 +8,9 @@ import org.springframework.stereotype.Component;
  * @create 2018-03-14 11:02
  **/
 @Component("webServiceTest")
-public class WebServiceTest extends IWebServiceTest {
-    @Override
-    public void sayHello() {
-        System.out.println("hello cxf");
-        System.out.println("Hello world");
+public class WebServiceTest implements IWebServiceTest {
+
+    public String sayHello(String str) {
+        return "hello cxf" + str;
     }
 }

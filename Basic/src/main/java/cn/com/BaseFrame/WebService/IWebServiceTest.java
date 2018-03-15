@@ -1,5 +1,7 @@
 package cn.com.BaseFrame.WebService;
 
+import cn.com.BaseFrame.Service.IBaseService;
+
 import javax.jws.WebService;
 
 /**
@@ -7,6 +9,6 @@ import javax.jws.WebService;
  * @create 2018-03-14 11:01
  **/
 @WebService
-public class IWebServiceTest {
-    public void sayHello() {};
+public interface IWebServiceTest extends IBaseService{
+    public String sayHello(String str);
 }
