@@ -36,7 +36,7 @@ public class FileUtils implements Serializable {
     }
 
     /**
-     *  @Description: 判断是不是文件夹,
+     *  @Description: 判断是不是文件夹
      *  @author xyh
      *  @Date 14:48 2018/3/14
      *  @method
@@ -55,6 +55,15 @@ public class FileUtils implements Serializable {
         }
     }
 
+    /**
+     *  @Description: 根据给定的文件类型和字符串去替换已有的字符串
+     *  @author xyh
+     *  @Date 14:52 2018/3/14
+     *  @method replace ：替换
+     *  params  srcFile ：需要替换的文件,mattcher ：要被替换的内容,content : 替换的内容,fileType : 要被替换的文件的类型
+     *  @return
+     *  @exception
+     **/
     public void replace(File srcFile,String mattcher,String content,String fileType) {
         try {
             String fileName = srcFile.getName();
@@ -62,7 +71,7 @@ public class FileUtils implements Serializable {
                 //按照,进行拆分
                 String[] types = fileType.split(",");
                 for(String type : types) {
-                    if(!fileName.endsWith("type")) {
+                    if(!fileName.endsWith(type)) {
                         return;
                     }
                 }
@@ -100,8 +109,9 @@ public class FileUtils implements Serializable {
                 bufferedWriter.close();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
-
     }
+
+
 }
