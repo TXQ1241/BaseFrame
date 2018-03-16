@@ -299,8 +299,14 @@
                 <!-- 这里是设置资源文件的路径,直接指定路径以及文件的属性 -->
                 <directory>src/main/resources</directory>
                 <includes>
+                    <!-- ** 匹配任意数量的字符，包括 /，只要它是路径中唯一的一部 -->
+                    <!-- 设置的是静态资源,不由服务器执行的,而由客户端浏览器执行的就叫静态文件。 -->
+                    <!-- 静态资源通常包括 : .html,.js -->
+                    <!-- 动态资源通常包括 : .jsp,.php -->
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
+                    <include>**/*.html</include>
+                    <include>**/*.js</include>
                 </includes>
                 <!-- 是否使用过滤器 -->
                 <!-- 过滤器的作用就是是否替换${..}等通配符,true则替换,false则不替换,按照${..}输入 -->
