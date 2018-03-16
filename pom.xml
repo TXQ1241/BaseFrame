@@ -307,6 +307,11 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
+                    <include>**/*.html</include>
+                    <include>**/*.js</include>
+                    <include>**/*.css</include>
+                    <include>**/*.jpg</include>
+                    <include>**/*.png</include>
                 </includes>
                 <!-- 是否使用过滤器 -->
                 <!-- 过滤器的作用就是是否替换${..}等通配符,true则替换,false则不替换,按照${..}输入 -->
