@@ -27,7 +27,7 @@ public class UserController extends BaseController {
     public String getUsers(HttpServletRequest request, User user) {
         List<User> userList = userService.getUsers(user);
         request.setAttribute("userList", userList);
-        return "/user/view";
+        return "index";
     }
 
 }
