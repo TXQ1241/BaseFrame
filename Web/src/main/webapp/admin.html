@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <!-- <link rel="stylesheet" href="./libs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./libs/css/jquery-ui.min.css"> -->
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./libs/layui/css/layui.css">
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">用户管理系统</div>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">用户列表</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <!-- <div style="padding: 15px;">内容主体区域</div> -->
+            <table id="demo" lay-filter="test"></table>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            619工作室
+        </div>
+    </div>
+</body>
+<!-- <script src="./libs/js/jquery.min.js"></script> -->
+<!-- <script src="./libs/js/bootstrap.min.js"></script>
+<script src="./libs/js/jquery-ui.min.js"></script> -->
+<script src="./libs/layui/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+    layui.use('table', function () {
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#demo',
+            height: 315,
+            url: 'http://192.168.0.100:8080/user-manager/user/userList',
+            method: 'post',
+            page: false,
+            response: {
+                dataName: 'datalist' //数据列表的字段名称，默认：data
+            },
+            id: 'test',
+            cols: [
+                [ //表头
+                    {
+                        field: 'id',
+                        title: 'ID',
+                        width: 80,
+                        sort: true,
+                        fixed: 'left'
+                    }, {
+                        field: 'account',
+                        title: '用户名',
+                        width: 80
+                    }, {
+                        field: 'password',
+                        title: '密码',
+                        width: 80,
+                        sort: true
+                    }, {
+                        field: 'name',
+                        title: '用户名',
+                        width: 80
+                    }, {
+                        field: 'age',
+                        title: '年龄',
+                        width: 177
+                    }, {
+                        field: 'email',
+                        title: '邮箱',
+                        width: 200,
+                        sort: true
+                    }
+                ]
+            ]
+        });
+
+    });
+</script>
+
+</html>
