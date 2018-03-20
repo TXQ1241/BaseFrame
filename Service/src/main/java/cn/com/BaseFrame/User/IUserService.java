@@ -16,4 +16,18 @@ public interface IUserService {
      * @return 用户集合
      */
     List<User> getUsers(User user);
+
+    /**
+     * 更新用户
+     *
+     * @param user 用户对象
+     */
+    void update(User user);
+
+    /**
+     * 保存用户
+     *
+     * @param user 用户对象
+     */
+    void save(User user);
 }

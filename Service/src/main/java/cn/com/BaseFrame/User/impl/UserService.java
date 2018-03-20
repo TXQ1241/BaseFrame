@@ -25,4 +25,14 @@ public class UserService implements IUserService {
         return userMapper.getUsers(user);
     }
 
+    @Override
+    public void update(User user) {
+        userMapper.updateByPrimaryKey(user);
+    }
+
+    @Override
+    public void save(User user) {
+        userMapper.insertSelective(user);
+    }
+
 }

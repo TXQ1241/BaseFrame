@@ -9,7 +9,7 @@ import java.util.UUID;
  * @author xyh
  * @create 2018-02-22 13:31
  **/
-public class StringUtils implements Serializable {
+public class StringUtils extends org.apache.commons.lang3.StringUtils implements Serializable {
 
     /**
      * @return 返回拼接后的字符串

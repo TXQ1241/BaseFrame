@@ -7,6 +7,18 @@ package cn.com.BaseFrame.Pojo.constant;
  * @create 2018-03-06 11:20
  **/
 public class Constant {
+
     public static final String Zero = "0";
     public static final String One = "1";
+
+    /**
+     * 请求状态定义
+     * @author huangy
+     * @create 2018-03-16 18:50
+     */
+    public interface AjaxStatus {
+         String AJAX_SUCCESS = "1";//请求成功
+         String AJAX_FAIL = "0";//请求失败
+    }
+
 }

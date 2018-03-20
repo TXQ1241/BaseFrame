@@ -8,15 +8,30 @@ import java.util.List;
 public interface UserMapper {
     int deleteByPrimaryKey(String id);
 
-    int insert(User record);
+    /**
+     * 保存用户
+     *
+     * @param user 用户对象
+     */
+    int insert(User user);
 
-    int insertSelective(User record);
+    /**
+     * 通过判断保存用户
+     *
+     * @param user 用户对象
+     */
+    int insertSelective(User user);
 
     User selectByPrimaryKey(String id);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByPrimaryKeySelective(User user);
 
-    int updateByPrimaryKey(User record);
+    /**
+     * 更新用户
+     *
+     * @param user 用户对象
+     */
+    int updateByPrimaryKey(User user);
 
     /**
      * 获取用户集合
