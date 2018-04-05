@@ -1,5 +1,6 @@
 package cn.com.BaseFrame.Vo;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,9 +8,39 @@ import java.util.List;
  * @Description: 前台数据封装
  * @Date 2018/03/20 19:00
  **/
-public class DataVo {
+public class DataVo implements Serializable {
 
-    private List<? extends Object> datalist;
+    private String code;//状态码
+
+    private String msg;//返回信息
+
+    private Integer count;//数据条数
+
+    private List<? extends Object> datalist;//数据
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public List<? extends Object> getDatalist() {
         return datalist;

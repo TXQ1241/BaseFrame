@@ -5,6 +5,7 @@ import cn.com.BaseFrame.BaseUtils.StringUtils.StringUtils;
 import cn.com.BaseFrame.Controller.BaseController;
 import cn.com.BaseFrame.Pojo.constant.Constant;
 import cn.com.BaseFrame.Vo.DataVo;
+import com.sun.tools.internal.jxc.ap.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -56,8 +57,21 @@ public class UserController extends BaseController {
     @ResponseBody
     public DataVo getUsers(User user) {
         DataVo dataVo = new DataVo();
-        List<User> userList = userService.getUsers(user);
-        dataVo.setDatalist(userList);
+        try {
+            List<User> userList = userService.getUsers(user);
+            dataVo.setDatalist(userList);
+            dataVo.setCode(Constant.DataCode.SUCCESS);
+            dataVo.setMsg("数据获取成功");
+            if (userList != null) {
+                dataVo.setCount(userList.size());
+            } else {
+                dataVo.setCount(Constant.ZERO_NUM);
+            }
+        } catch (Exception e) {
+            dataVo.setCode(Constant.DataCode.FAIL);
+            dataVo.setMsg("数据获取失败");
+            e.printStackTrace();
+        }
         return dataVo;
     }
 
