@@ -32,4 +32,13 @@ public class Constant {
         String SUCCESS = "1";//成功
     }
 
+    private interface PageSize {
+        Integer NUM_FIVE = 5;
+        Integer NUM_SIX = 6;
+        Integer NUM_SEVEN = 7;
+        Integer NUM_EIGHT = 8;
+        Integer NUM_NINE = 9;
+        Integer NUM_TEN = 10;
+    }
+
 }

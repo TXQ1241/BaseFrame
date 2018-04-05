@@ -3,6 +3,7 @@ package cn.com.BaseFrame.User.impl;
 import cn.com.BaseFrame.Api.User;
 import cn.com.BaseFrame.Api.UserMapper;
 import cn.com.BaseFrame.User.IUserService;
+import cn.com.BaseFrame.Vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,8 @@ public class UserService implements IUserService {
     @Qualifier("userMapper")
     UserMapper userMapper;
 
-    public List<User> getUsers(User user) {
-        return userMapper.getUsers(user);
+    public List<User> getUsers(UserVo userVo) {
+        return userMapper.getUsers(userVo);
     }
 
     @Override
@@ -38,6 +39,11 @@ public class UserService implements IUserService {
     @Override
     public void deleteUsersByIds(String[] userIds) {
         userMapper.deleteUsersByIds(userIds);
+    }
+
+    @Override
+    public Integer getUserCount(UserVo userVo) {
+        return userMapper.getUserCount(userVo);
     }
 
 }
