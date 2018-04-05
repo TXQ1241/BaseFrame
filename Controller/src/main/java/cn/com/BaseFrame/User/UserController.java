@@ -5,7 +5,7 @@ import cn.com.BaseFrame.BaseUtils.StringUtils.StringUtils;
 import cn.com.BaseFrame.Controller.BaseController;
 import cn.com.BaseFrame.Pojo.constant.Constant;
 import cn.com.BaseFrame.Vo.DataVo;
-import com.sun.tools.internal.jxc.ap.Const;
+import cn.com.BaseFrame.Vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -55,15 +55,20 @@ public class UserController extends BaseController {
      **/
     @RequestMapping("userList")
     @ResponseBody
-    public DataVo getUsers(User user) {
+    public DataVo getUsers(UserVo userVo) {
         DataVo dataVo = new DataVo();
+        Integer pageNum = userVo.getPageNum();
+        //设置查询开始的条数(就是从哪条开始查询)
+        if(pageNum != null) {
+            userVo.setPageNum((pageNum-1)*10);
+        }
         try {
-            List<User> userList = userService.getUsers(user);
+            List<User> userList = userService.getUsers(userVo);
             dataVo.setDatalist(userList);
             dataVo.setCode(Constant.DataCode.SUCCESS);
             dataVo.setMsg("数据获取成功");
             if (userList != null) {
-                dataVo.setCount(userList.size());
+                dataVo.setCount(userService.getUserCount(userVo));
             } else {
                 dataVo.setCount(Constant.ZERO_NUM);
             }

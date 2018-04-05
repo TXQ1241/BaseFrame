@@ -222,8 +222,26 @@
   </update>
 
     <!-- 通过用户对象获取用户列表 -->
-    <select id="getUsers" resultMap="BaseResultMap" resultType="cn.com.BaseFrame.Api.User" parameterType="cn.com.BaseFrame.Api.User">
+    <select id="getUsers" resultMap="BaseResultMap" resultType="cn.com.BaseFrame.Vo.UserVo" parameterType="cn.com.BaseFrame.Api.User" >
         select *
+        from user u
+        <where>
+            <if test="userName != null">
+                u.user_name like '%${userName}%'
+            </if>
+            <if test="account != null">
+                and u.account like '%${account}%'
+            </if>
+            <if test="age != null">
+                and u.age = #{age}
+            </if>
+        </where>
+        limit #{pageNum},#{pageSize}
+    </select>
+
+    <!-- 查询用户记录的总条数 -->
+    <select id="getUserCount" resultType="java.lang.Integer" parameterType="cn.com.BaseFrame.Vo.UserVo" >
+        select count(*)
         from user u
         <where>
             <if test="userName != null">

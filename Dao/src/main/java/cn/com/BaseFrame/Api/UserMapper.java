@@ -1,5 +1,6 @@
 package cn.com.BaseFrame.Api;
 
+import cn.com.BaseFrame.Vo.UserVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -46,11 +47,22 @@ public interface UserMapper {
      *  @author huangy
      *  @Date 2018/3/20
      *  @method getUsers
-     *  params  [user] 用户对象
+     *  params  [userVo] 用户查询对象
      *  @return 用户集合
      *  @exception
      **/
-    List<User> getUsers(User user);
+    List<User> getUsers(UserVo userVo);
+
+    /**
+     *  @Description: 获取用户记录的总条数
+     *  @author huangy
+     *  @Date 2018/4/5
+     *  @method getUserCount
+     *  params  [userVo] 用户查询对象
+     *  @return java.lang.Integer 总条数
+     *  @exception
+     **/
+    Integer getUserCount(UserVo userVo);
 
     /**
      *  @Description: 批量删除用户信息

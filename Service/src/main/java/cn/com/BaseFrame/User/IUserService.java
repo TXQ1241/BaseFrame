@@ -1,6 +1,7 @@
 package cn.com.BaseFrame.User;
 
 import cn.com.BaseFrame.Api.User;
+import cn.com.BaseFrame.Vo.UserVo;
 
 import java.util.List;
 
@@ -14,11 +15,22 @@ public interface IUserService {
      *  @author huangy
      *  @Date 2018/3/20
      *  @method getUsers
-     *  params  [user]
-     *  @return java.util.List<cn.com.BaseFrame.Api.User>
+     *  params  [userVo] 用户查询对象
+     *  @return 用户集合
      *  @exception
      **/
-    List<User> getUsers(User user);
+    List<User> getUsers(UserVo userVo);
+
+    /**
+     *  @Description: 获取用户记录的总条数
+     *  @author huangy
+     *  @Date 2018/4/5
+     *  @method getUserCount
+     *  params  [userVo] 用户查询对象
+     *  @return java.lang.Integer 总条数
+     *  @exception
+     **/
+    Integer getUserCount(UserVo userVo);
 
     /**
      *  @Description: 更新用户
