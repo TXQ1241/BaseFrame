@@ -31,7 +31,14 @@
         <div class="layui-body">
             <!-- 内容主体区域 -->
             <!-- <div style="padding: 15px;">内容主体区域</div> -->
-            <table id="demo" lay-filter="test"></table>
+            <div class="demoTable">
+                搜索ID：
+                <div class="layui-inline">
+                    <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload">搜索</button>
+            </div>
+            <table id="datalist" lay-filter="demo"></table>
         </div>
 
         <div class="layui-footer">
@@ -44,24 +51,37 @@
 <!-- <script src="./libs/js/bootstrap.min.js"></script>
 <script src="./libs/js/jquery-ui.min.js"></script> -->
 <script src="../libs/layui/layui.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
 <script>
     //JavaScript代码区域
     layui.config({
-        debug: true //用于开启调试模式，默认false，如果设为true，则JS模块的节点会保留在页面
-    }).use(['element', 'table'], function () {
-        var element = layui.element;
+        // debug: true //用于开启调试模式，默认false，如果设为true，则JS模块的节点会保留在页面
+    }).use(['table'], function () {
         var table = layui.table;
 
         //第一个实例
         table.render({
-            elem: '#demo',
+            elem: '#datalist',
             height: 315,
             url: 'http://localhost:8080/user-manager/user/userList',
             method: 'post',
-            page: false,
             response: {
                 statusCode: 1,
                 dataName: 'datalist'
+            },
+            request: {
+                pageName: 'pageNumber', //页码的参数名称，默认：page
+                limitName: 'pageSize', //每页数据量的参数名，默认：limit
+                page: 0,
+                limit: 10
+            },
+            page: {
+                limits: [5, 10]
             },
             id: 'test1',
             done: function (res) {
@@ -72,12 +92,12 @@
                     {
                         field: 'id',
                         title: 'ID',
-                        width: 80,
+                        width: 150,
                         sort: true,
                     }, {
                         field: 'account',
                         title: '用户名',
-                        width: 80
+                        width: 150
                     }, {
                         field: 'password',
                         title: '密码',
@@ -85,7 +105,7 @@
                     }, {
                         field: 'userName',
                         title: '用户名',
-                        width: 80
+                        width: 150
                     }, {
                         field: 'age',
                         title: '年龄',
@@ -94,9 +114,39 @@
                         field: 'email',
                         title: '邮箱',
                         width: 200
+                    }, {
+                        fixed: 'right',
+                        width: 178,
+                        align: 'center',
+                        toolbar: '#barDemo'
                     }
                 ]
             ]
+        });
+        table.on('tool(demo)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'detail') {
+                layer.open({
+                    title: '用户详情',
+                    type: 1,
+                    skin: 'layui-layer-molv',
+                    shadeClose: true,
+                    resize: false,
+                    content: '可以填写任意的layer代码'
+                });
+            } else if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                    layer.close(index);
+                    //向服务端发送删除指令
+                });
+            } else if (obj.event === 'edit') {
+                //同步更新缓存对应的值
+                obj.update({
+                    username: '123',
+                    title: 'xxx'
+                });
+            }
         });
     });
 </script>
