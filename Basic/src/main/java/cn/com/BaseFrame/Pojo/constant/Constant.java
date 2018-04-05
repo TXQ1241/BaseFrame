@@ -8,8 +8,9 @@ package cn.com.BaseFrame.Pojo.constant;
  **/
 public class Constant {
 
-    public static final String Zero = "0";
-    public static final String One = "1";
+    public static final String ZERO = "0";
+    public static final String ONE = "1";
+    public static final Integer ZERO_NUM = 0;
 
     /**
      * 请求状态定义
@@ -19,6 +20,16 @@ public class Constant {
     public interface AjaxStatus {
          String AJAX_SUCCESS = "1";//请求成功
          String AJAX_FAIL = "0";//请求失败
+    }
+
+    /**
+     *  数据请求状态码
+     *  @author huangy
+     *  @Date 2018/4/5
+     **/
+    public interface DataCode {
+        String FAIL = "0";//失败
+        String SUCCESS = "1";//成功
     }
 
 }
