@@ -237,4 +237,15 @@
             </if>
         </where>
     </select>
+
+    <!-- 批量删除用户 -->
+    <delete id="deleteUsersByIds" parameterType="java.lang.String">
+        delete from user
+        <where>
+            id in 
+            <foreach collection="array" item="id" separator="," open="(" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
 </mapper>

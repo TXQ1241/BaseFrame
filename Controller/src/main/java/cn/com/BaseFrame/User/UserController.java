@@ -29,11 +29,29 @@ public class UserController extends BaseController {
     @Qualifier("userService")
     IUserService userService;
 
+    /**
+     *  @Description: 跳转到用户管理页面
+     *  @author huangy
+     *  @Date 2018/3/20
+     *  @method toUsers
+     *  params  []
+     *  @return java.lang.String
+     *  @exception
+     **/
     @RequestMapping("view")
-    public String getUsers() {
-        return "userList";
+    public String toUsers() {
+        return "admin";
     }
 
+    /**
+     *  @Description: 通过用户对象获取用户数据
+     *  @author huangy
+     *  @Date 2018/3/20
+     *  @method getUsers
+     *  params  [user] 用户对象
+     *  @return DataVo 用户集对象
+     *  @exception
+     **/
     @RequestMapping("userList")
     @ResponseBody
     public DataVo getUsers(User user) {
@@ -43,9 +61,18 @@ public class UserController extends BaseController {
         return dataVo;
     }
 
+    /**
+     *  @Description: 保存用户
+     *  @author huangy
+     *  @Date 2018/3/20
+     *  @method saveUsers
+     *  params  [user] 用户对象
+     *  @return 操作信息
+     *  @exception
+     **/
     @RequestMapping("save")
     @ResponseBody
-    public Map<String, String> saveUsers(User user) {
+    public Map<String, String> saveUser(User user) {
         Map<String, String> msgMap = new HashMap<String, String>();
         try {
             if (StringUtils.isNotBlank(user.getId())) {
@@ -59,6 +86,32 @@ public class UserController extends BaseController {
             msgMap.put(Constant.AjaxStatus.AJAX_SUCCESS,"保存用户信息成功");
         } catch (Exception e) {
             msgMap.put(Constant.AjaxStatus.AJAX_FAIL,"保存用户信息失败");
+        }
+        return msgMap;
+    }
+
+    /**
+     *  @Description: 删除用户
+     *  @author huangy
+     *  @Date 2018/3/20
+     *  @method deleteUsers
+     *  params  [user] 用户对象
+     *  @return 操作信息
+     *  @exception
+     **/
+    @RequestMapping("delete")
+    @ResponseBody
+    public Map<String, String> deleteUsers(User user) {
+        Map<String, String> msgMap = new HashMap<String, String>();
+        String [] userIds = user.getIds();
+        try {
+
+            if(userIds != null && userIds.length > 0) {
+                userService.deleteUsersByIds(userIds);
+            }
+            msgMap.put(Constant.AjaxStatus.AJAX_SUCCESS,"删除用户信息成功");
+        } catch (Exception e) {
+            msgMap.put(Constant.AjaxStatus.AJAX_FAIL,"删除用户信息失败");
         }
         return msgMap;
     }

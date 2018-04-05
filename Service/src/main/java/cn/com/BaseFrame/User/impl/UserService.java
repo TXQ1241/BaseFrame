@@ -35,4 +35,9 @@ public class UserService implements IUserService {
         userMapper.insertSelective(user);
     }
 
+    @Override
+    public void deleteUsersByIds(String[] userIds) {
+        userMapper.deleteUsersByIds(userIds);
+    }
+
 }

@@ -5,6 +5,8 @@ import java.util.Date;
 public class User {
     private String id;
 
+    private String [] ids;
+
     private String account;
 
     private String password;
@@ -41,6 +43,14 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String[] getIds() {
+        return ids;
+    }
+
+    public void setIds(String[] ids) {
+        this.ids = ids;
     }
 
     public String getAccount() {

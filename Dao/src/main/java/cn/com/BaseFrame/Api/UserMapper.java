@@ -9,17 +9,25 @@ public interface UserMapper {
     int deleteByPrimaryKey(String id);
 
     /**
-     * 保存用户
-     *
-     * @param user 用户对象
-     */
+     *  @Description: 保存用户
+     *  @author huangy
+     *  @Date 2018/3/20
+     *  @method insert
+     *  params  [user] 用户对象
+     *  @return int
+     *  @exception
+     **/
     int insert(User user);
 
     /**
-     * 通过判断保存用户
-     *
-     * @param user 用户对象
-     */
+     *  @Description: 保存用户
+     *  @author huangy
+     *  @Date 2018/3/20
+     *  @method insertSelective
+     *  params  [user] 用户对象
+     *  @return int
+     *  @exception
+     **/
     int insertSelective(User user);
 
     User selectByPrimaryKey(String id);
@@ -34,10 +42,24 @@ public interface UserMapper {
     int updateByPrimaryKey(User user);
 
     /**
-     * 获取用户集合
-     *
-     * @param user 用户对象
-     * @return 用户集合
-     */
+     *  @Description: 通过用户对象获取用户集合
+     *  @author huangy
+     *  @Date 2018/3/20
+     *  @method getUsers
+     *  params  [user] 用户对象
+     *  @return 用户集合
+     *  @exception
+     **/
     List<User> getUsers(User user);
+
+    /**
+     *  @Description: 批量删除用户信息
+     *  @author huangy
+     *  @Date 2018/3/20
+     *  @method deleteUsersByIds
+     *  params  [userIds] 用户id集合
+     *  @return void
+     *  @exception
+     **/
+    void deleteUsersByIds(String[] userIds);
 }
