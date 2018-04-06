@@ -5,7 +5,7 @@ import java.util.Date;
 public class User {
     private String id;
 
-    private String [] ids;
+    private String ids;
 
     private String account;
 
@@ -45,11 +45,11 @@ public class User {
         this.id = id;
     }
 
-    public String[] getIds() {
+    public String getIds() {
         return ids;
     }
 
-    public void setIds(String[] ids) {
+    public void setIds(String ids) {
         this.ids = ids;
     }
 

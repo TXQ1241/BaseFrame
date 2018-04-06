@@ -26,6 +26,7 @@ ServerUtil = {
             contentType: 'application/json; charset=UTF-8',
             url: url,
             data: JSON.stringify(data),
+            dataType: "json",
             success: function (result) {
                 if (result.error) {
                     if (error) {

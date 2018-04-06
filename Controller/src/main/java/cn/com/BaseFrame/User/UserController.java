@@ -9,6 +9,7 @@ import cn.com.BaseFrame.Vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -120,9 +121,12 @@ public class UserController extends BaseController {
      **/
     @RequestMapping("delete")
     @ResponseBody
-    public Map<String, String> deleteUsers(User user) {
+    public Map<String, String> deleteUsers(@RequestBody User user) {
         Map<String, String> msgMap = new HashMap<String, String>();
-        String [] userIds = user.getIds();
+        String [] userIds = null;
+        if(StringUtils.isNotBlank(user.getIds())){
+            userIds = user.getIds().split(",");
+        }
         try {
 
             if(userIds != null && userIds.length > 0) {
