@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <title>admin</title>
     <link rel="stylesheet" href="../css/base.css">
-    <!-- <link rel="stylesheet" href="./libs/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./libs/css/jquery-ui.min.css"> -->
     <link rel="stylesheet" href="../iconfont/iconfont.css">
     <link rel="stylesheet" href="../libs/layui/css/layui.css">
 </head>
@@ -38,7 +36,7 @@
                 </div>
                 <button class="layui-btn" data-type="reload">搜索</button>
             </div>
-            <table id="datalist" lay-filter="demo"></table>
+            <table id="datalist" lay-filter="tableBtn"></table>
         </div>
 
         <div class="layui-footer">
@@ -46,27 +44,44 @@
             619工作室
         </div>
     </div>
+    <div style="display: none;" id="tableBox"></div>
 </body>
-<!-- <script src="./libs/js/jquery.min.js"></script> -->
-<!-- <script src="./libs/js/bootstrap.min.js"></script>
-<script src="./libs/js/jquery-ui.min.js"></script> -->
+
 <script src="../libs/layui/layui.js"></script>
-<script type="text/html" id="barDemo">
+<script type="text/html" id="tableBtn">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
 <!-- 详情面板 -->
-<script type="text/html"></script>
+<script type="text/html" id="tableDetail">
+    <table class="layui-table">
+        {{# layui.each(d, function(index, item){ }}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.val }}</td>
+        </tr>
+        {{# }); }} 
+    </table>
+</script>
 
 <script>
     //JavaScript代码区域
     layui.config({
         // debug: true //用于开启调试模式，默认false，如果设为true，则JS模块的节点会保留在页面
-    }).use(['table'], function () {
+    }).use(['table', 'laytpl'], function () {
         var table = layui.table;
-
+        var $ = layui.$;
+        var laytpl = layui.laytpl;
+        var tableTitle = {
+            id: 'ID',
+            account: '账号',
+            password: '密码',
+            userName: '用户名',
+            age: '年龄',
+            email: '邮箱'
+        };
         //第一个实例
         table.render({
             elem: '#datalist',
@@ -99,7 +114,7 @@
                         sort: true,
                     }, {
                         field: 'account',
-                        title: '用户名',
+                        title: '账号',
                         width: 150
                     }, {
                         field: 'password',
@@ -121,21 +136,36 @@
                         fixed: 'right',
                         width: 178,
                         align: 'center',
-                        toolbar: '#barDemo'
+                        toolbar: '#tableBtn'
                     }
                 ]
             ]
         });
-        table.on('tool(demo)', function (obj) {
+        table.on('tool(tableBtn)', function (obj) {
             var data = obj.data;
             if (obj.event === 'detail') {
+                var userList = [];
+                for (var attr in data) {
+                    if (tableTitle[attr]) {
+                        var obj = {};
+                        obj.title = tableTitle[attr];
+                        obj.val = data[attr] || '';
+                        userList.push(obj);
+                    }
+                }
+                var getTpl = tableDetail.innerHTML,
+                    view = document.getElementById('tableBox');
+                laytpl(getTpl).render(userList, function (html) {
+                    view.innerHTML = html;
+                });
                 layer.open({
                     title: '用户详情',
                     type: 1,
                     skin: 'layui-layer-molv',
                     shadeClose: true,
                     resize: false,
-                    content: '可以填写任意的layer代码'
+                    // area: ['500px', '300px'],
+                    content: $('#tableBox')
                 });
             } else if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
