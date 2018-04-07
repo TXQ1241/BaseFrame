@@ -29,12 +29,26 @@
         <div class="layui-body">
             <!-- 内容主体区域 -->
             <!-- <div style="padding: 15px;">内容主体区域</div> -->
-            <div class="demoTable">
-                搜索ID：
+            <div class="demoTable layui-inline">
+                搜索账号：
                 <div class="layui-inline">
-                    <input class="layui-input" name="id" id="idReload" autocomplete="off">
+                    <input class="layui-input" name="account" id="accountReload" autocomplete="off">
                 </div>
-                <button class="layui-btn" data-type="reload" id="idReloadBtn">搜索</button>
+                <button class="layui-btn" data-type="reload" id="accountReloadBtn">搜索</button>
+            </div>
+            <div class="demoTable layui-inline">
+                搜索用户名：
+                <div class="layui-inline">
+                    <input class="layui-input" name="userName" id="userNameReload" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload" id="userNameReloadBtn">搜索</button>
+            </div>
+            <div class="demoTable layui-inline">
+                搜索年龄：
+                <div class="layui-inline">
+                    <input class="layui-input" name="age" id="ageReload" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload" id="ageReloadBtn">搜索</button>
             </div>
             <table id="datalist" lay-filter="tableBtn"></table>
             <button class="layui-btn" id="addUser">新增</button>
