@@ -32,11 +32,13 @@
             <div class="demoTable">
                 搜索ID：
                 <div class="layui-inline">
-                    <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+                    <input class="layui-input" name="id" id="idReload" autocomplete="off">
                 </div>
-                <button class="layui-btn" data-type="reload">搜索</button>
+                <button class="layui-btn" data-type="reload" id="idReloadBtn">搜索</button>
             </div>
             <table id="datalist" lay-filter="tableBtn"></table>
+            <button class="layui-btn" id="addUser">新增</button>
+            <button class="layui-btn" id="deleteUsers">批量删除</button>
         </div>
 
         <div class="layui-footer">
@@ -55,6 +57,18 @@
 
 <!-- 详情面板 -->
 <script type="text/html" id="tableDetail">
+    <table class="layui-table">
+        {{# layui.each(d, function(index, item){ }}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.val }}</td>
+        </tr>
+        {{# }); }} 
+    </table>
+</script>
+
+<!-- 新增和编辑面板 -->
+<script type="text/html" id="tableEdit">
     <table class="layui-table">
         {{# layui.each(d, function(index, item){ }}
         <tr>

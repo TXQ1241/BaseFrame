@@ -32,12 +32,13 @@ layui.config({
         page: {
             limits: [10]
         },
-        id: 'test1',
+        id: 'poemUsers',
         done: function (res) {
             console.log(res);
         },
         cols: [
             [ //表头
+                {type:'checkbox'},
                 {
                     field: 'id',
                     title: 'ID',
@@ -72,6 +73,19 @@ layui.config({
             ]
         ]
     });
+    //表格重载函数
+    function tableReload(conditions) {
+        var obj = {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        };
+        if (conditions) {
+            obj.where = conditions;
+        }
+        table.reload('poemUsers', obj);
+    }
+    //查看、编辑、删除按钮功能
     table.on('tool(tableBtn)', function (obj) {
         var data = obj.data;
         if (obj.event === 'detail') {
@@ -88,7 +102,7 @@ layui.config({
                 view = document.getElementById('tableBox');
             laytpl(getTpl).render(userList, function (html) {
                 view.innerHTML = html;
-            }); 
+            });
             layer.open({
                 title: '用户详情',
                 type: 1,
@@ -99,10 +113,13 @@ layui.config({
                 content: $('#tableBox')
             });
         } else if (obj.event === 'del') {
-            layer.confirm('真的删除行么', function (index) {
-                ServerUtil.api('delete', {ids: data.id}, function () {
+            layer.confirm('真的删除么', function (index) {
+                ServerUtil.api('delete', {
+                    ids: data.id
+                }, function () {
                     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                     layer.close(index);
+                    tableReload();
                 });
             });
         } else if (obj.event === 'edit') {
@@ -112,5 +129,34 @@ layui.config({
                 title: 'xxx'
             });
         }
+    });
+
+    //按条件搜索
+    $('#idReloadBtn').on('click', function () {
+        // var type = $(this).data('type');
+        var idReload = $('#idReload');
+        tableReload({id: idReload.val()});
+    });
+    //批量删除
+    $('#deleteUsers').on('click', function () {
+        var checkStatus = table.checkStatus('poemUsers'); //获取复选框信息
+        if (checkStatus.data.length == 0) {
+            layer.confirm('请选择要删除的行');
+            return;
+        }
+        var str = '确定删除这' + checkStatus.data.length + '条信息吗';
+        layer.confirm(str, function (index) {
+            var userIdsArr = [];
+            checkStatus.data.forEach(function (val) {
+                userIdsArr.push(val.id);
+            });
+            var userIdsStr = userIdsArr.join(',');
+            ServerUtil.api('delete', {
+                ids: userIdsStr
+            }, function () {
+                layer.close(index);
+                tableReload();
+            });
+        });
     });
 });

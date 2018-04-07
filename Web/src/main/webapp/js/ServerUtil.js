@@ -44,7 +44,6 @@ ServerUtil = {
                     error(a, b, c);
                 } else {
                     console.error(a.responseText);
-                    ServerUtil.alert(result.error);
                 }
             },
         })
