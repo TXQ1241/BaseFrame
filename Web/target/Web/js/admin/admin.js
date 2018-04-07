@@ -132,20 +132,16 @@ layui.config({
     });
 
     //按条件搜索
-    $('#accountReloadBtn').on('click', function () {
+    $('#searchBtn').on('click', function () {
         // var type = $(this).data('type');
-        var accountReload = $('#accountReload');
-        tableReload({account: accountReload.val()});
-    });
-    $('#userNameReloadBtn').on('click', function () {
-        // var type = $(this).data('type');
-        var userNameReload = $('#userNameReload');
-        tableReload({userName: userNameReload.val()});
-    });
-    $('#ageReloadBtn').on('click', function () {
-        // var type = $(this).data('type');
-        var ageReload = $('#ageReload');
-        tableReload({age: ageReload.val()});
+        var obj = {};
+        var account = $('#accountReload').val();
+        var userName = $('#userNameReload').val();
+        var age = $('#ageReload').val();
+        obj.account = account
+        obj.userName = userName
+        obj.age = age
+        tableReload(obj);
     });
     //批量删除
     $('#deleteUsers').on('click', function () {
