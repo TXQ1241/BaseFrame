@@ -92,7 +92,7 @@ public class UserController extends BaseController {
      **/
     @RequestMapping("save")
     @ResponseBody
-    public Map<String, String> saveUser(User user) {
+    public Map<String, String> saveUser(@RequestBody User user) {
         Map<String, String> msgMap = new HashMap<String, String>();
         try {
             if (StringUtils.isNotBlank(user.getId())) {

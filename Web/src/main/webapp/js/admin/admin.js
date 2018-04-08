@@ -34,11 +34,13 @@ layui.config({
         },
         id: 'poemUsers',
         done: function (res) {
-            console.log(res);
+            
         },
         cols: [
             [ //表头
-                {type:'checkbox'},
+                {
+                    type: 'checkbox'
+                },
                 {
                     field: 'id',
                     title: 'ID',
@@ -92,10 +94,10 @@ layui.config({
             var userList = [];
             for (var attr in data) {
                 if (tableTitle[attr]) {
-                    var obj = {};
-                    obj.title = tableTitle[attr];
-                    obj.val = data[attr] || '';
-                    userList.push(obj);
+                    var dataObj = {};
+                    dataObj.title = tableTitle[attr];
+                    dataObj.val = data[attr] || '';
+                    userList.push(dataObj);
                 }
             }
             var getTpl = tableDetail.innerHTML,
@@ -117,16 +119,51 @@ layui.config({
                 ServerUtil.api('delete', {
                     ids: data.id
                 }, function () {
-                    obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
-                    layer.close(index);
+                    // obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                     tableReload();
+                    layer.close(index);
                 });
             });
         } else if (obj.event === 'edit') {
-            //同步更新缓存对应的值
-            obj.update({
-                username: '123',
-                title: 'xxx'
+            var userList = [];
+            for (var attr in data) {
+                if (tableTitle[attr]) {
+                    var dataObj = {};
+                    dataObj.title = tableTitle[attr];
+                    dataObj.val = data[attr] || '';
+                    dataObj.field = attr;
+                    dataObj.className = 'table-edit-input';
+                    userList.push(dataObj);
+                }
+            }
+            var getTpl = tableEdit.innerHTML,
+                view = document.getElementById('tableBox');
+            laytpl(getTpl).render(userList, function (html) {
+                view.innerHTML = html;
+            });
+            layer.open({
+                title: '编辑',
+                type: 1,
+                skin: 'layui-layer-molv',
+                resize: false,
+                btn: ['确定', '取消'],
+                yes: function (index, layero) {
+                    //按钮【按钮一】的回调
+                    $('.table-edit-input').each(function (index, val) {
+                        data[val.dataset.type] = $(val).val();
+                    });
+                    ServerUtil.api('save', data, function () {
+                        //同步更新缓存对应的值
+                        obj.update(data);
+                        // tableReload();
+                        layer.close(index);
+                    });
+                },
+                btn2: function (index, layero) {
+                    //按钮【按钮二】的回调
+                    layer.close(index);
+                },
+                content: $('#tableBox')
             });
         }
     });
@@ -163,6 +200,47 @@ layui.config({
                 layer.close(index);
                 tableReload();
             });
+        });
+    });
+    //新增
+    $('#addUser').on('click', function () {
+        var userList = [];
+        var obj = {};
+        for (var attr in tableTitle) {
+            obj[attr] = '';
+            var dataObj = {};
+            dataObj.title = tableTitle[attr];
+            dataObj.val = '';
+            dataObj.field = attr;
+            dataObj.className = 'table-add-input';
+            userList.push(dataObj);
+        }
+        var getTpl = tableEdit.innerHTML,
+            view = document.getElementById('tableBox');
+        laytpl(getTpl).render(userList, function (html) {
+            view.innerHTML = html;
+        });
+        layer.open({
+            title: '编辑',
+            type: 1,
+            skin: 'layui-layer-molv',
+            resize: false,
+            btn: ['确定', '取消'],
+            yes: function (index, layero) {
+                //按钮【按钮一】的回调
+                $('.table-add-input').each(function (index, val) {
+                    obj[val.dataset.type] = $(val).val();
+                });
+                ServerUtil.api('save', obj, function () {
+                    tableReload();
+                    layer.close(index);
+                });
+            },
+            btn2: function (index, layero) {
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+            content: $('#tableBox')
         });
     });
 });

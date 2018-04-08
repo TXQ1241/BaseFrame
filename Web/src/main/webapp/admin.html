@@ -30,15 +30,15 @@
             <!-- 内容主体区域 -->
             <!-- <div style="padding: 15px;">内容主体区域</div> -->
             <div class="demoTable layui-inline">
-                搜索账号：
+                账号：
                 <div class="layui-inline">
                     <input class="layui-input" name="account" id="accountReload" autocomplete="off">
                 </div>
-                搜索用户名：
+                用户名：
                 <div class="layui-inline">
                     <input class="layui-input" name="userName" id="userNameReload" autocomplete="off">
                 </div>
-                搜索年龄：
+                年龄：
                 <div class="layui-inline">
                     <input class="layui-input" name="age" id="ageReload" autocomplete="off">
                 </div>
@@ -81,7 +81,7 @@
         {{# layui.each(d, function(index, item){ }}
         <tr>
             <td>{{ item.title }}</td>
-            <td>{{ item.val }}</td>
+            <td><input type="text" data-type="{{item.field}}" value="{{ item.val }}" class="{{item.className}}"></td>
         </tr>
         {{# }); }} 
     </table>
