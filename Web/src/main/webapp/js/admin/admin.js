@@ -6,17 +6,21 @@ layui.config({
     var $ = layui.$;
     var laytpl = layui.laytpl;
     var tableTitle = {
-        id: 'ID',
         account: '账号',
         password: '密码',
         userName: '用户名',
         age: '年龄',
-        email: '邮箱'
+        email: '邮箱',
+        profession: '职业',
+        description: '描述',
+        qqNum: 'qq号',
+        birthday: '生日',
+        phoneNum: '手机号'
     };
     //第一个实例
     table.render({
         elem: '#datalist',
-        height: 315,
+        // height: 315,
         url: 'http://localhost:8080/user-manager/user/userList',
         method: 'post',
         response: {
@@ -42,14 +46,9 @@ layui.config({
                     type: 'checkbox'
                 },
                 {
-                    field: 'id',
-                    title: 'ID',
-                    width: 150,
-                    sort: true,
-                }, {
                     field: 'account',
                     title: '账号',
-                    width: 150
+                    // width: 150
                 }, {
                     field: 'password',
                     title: '密码',
@@ -57,18 +56,42 @@ layui.config({
                 }, {
                     field: 'userName',
                     title: '用户名',
-                    width: 150
+                    // width: 150
                 }, {
                     field: 'age',
                     title: '年龄',
-                    width: 177
+                    // width: 177,
+                    sort: true,
                 }, {
                     field: 'email',
                     title: '邮箱',
-                    width: 200
+                    // width: 200
+                }, {
+                    field: 'profession',
+                    title: '职业',
+                    // width: 200
+                }, {
+                    field: 'description',
+                    title: '描述',
+                    // width: 200
+                }, {
+                    field: 'qqNum',
+                    title: 'qq号',
+                    sort: true,
+                    // width: 200
+                }, {
+                    field: 'birthday',
+                    title: '生日',
+                    sort: true,
+                    // width: 200
+                }, {
+                    field: 'phoneNum',
+                    title: '手机号',
+                    sort: true,
+                    // width: 200
                 }, {
                     fixed: 'right',
-                    width: 178,
+                    // width: 178,
                     align: 'center',
                     toolbar: '#tableBtn'
                 }
@@ -115,7 +138,7 @@ layui.config({
                 content: $('#tableBox')
             });
         } else if (obj.event === 'del') {
-            layer.confirm('真的删除么', function (index) {
+            layer.confirm('真的删除么', {skin: 'layui-layer-molv'}, function (index) {
                 ServerUtil.api('delete', {
                     ids: data.id
                 }, function () {
@@ -144,7 +167,7 @@ layui.config({
             layer.open({
                 title: '编辑',
                 type: 1,
-                skin: 'layui-layer-molv',
+                skin: 'layui-layer-molv layer-btn-class',
                 resize: false,
                 btn: ['确定', '取消'],
                 yes: function (index, layero) {
@@ -223,7 +246,7 @@ layui.config({
         layer.open({
             title: '编辑',
             type: 1,
-            skin: 'layui-layer-molv',
+            skin: 'layui-layer-molv layer-btn-class',
             resize: false,
             btn: ['确定', '取消'],
             yes: function (index, layero) {

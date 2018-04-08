@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../iconfont/iconfont.css">
     <link rel="stylesheet" href="../libs/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 
 <body class="layui-layout-body">
@@ -26,10 +28,10 @@
             </div>
         </div>
 
-        <div class="layui-body">
+        <div class="layui-body user-table">
             <!-- 内容主体区域 -->
             <!-- <div style="padding: 15px;">内容主体区域</div> -->
-            <div class="demoTable layui-inline">
+            <div class="demoTable layui-clear">
                 账号：
                 <div class="layui-inline">
                     <input class="layui-input" name="account" id="accountReload" autocomplete="off">
@@ -43,10 +45,10 @@
                     <input class="layui-input" name="age" id="ageReload" autocomplete="off">
                 </div>
                 <button class="layui-btn" data-type="reload" id="searchBtn">搜索</button>
+                <button class="layui-btn layui-btn-danger" id="deleteUsers">批量删除</button>
+                <button class="layui-btn" id="addUser">新增</button>
             </div>
             <table id="datalist" lay-filter="tableBtn"></table>
-            <button class="layui-btn" id="addUser">新增</button>
-            <button class="layui-btn" id="deleteUsers">批量删除</button>
         </div>
 
         <div class="layui-footer">
@@ -54,7 +56,7 @@
             619工作室
         </div>
     </div>
-    <div style="display: none;" id="tableBox"></div>
+    <div style="display: none;" id="tableBox" class="template-box"></div>
 </body>
 
 <script type="text/html" id="tableBtn">
