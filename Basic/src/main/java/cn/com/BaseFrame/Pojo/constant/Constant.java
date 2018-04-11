@@ -32,13 +32,27 @@ public class Constant {
         String SUCCESS = "1";//成功
     }
 
-    private interface PageSize {
+    public interface PageSize {
         Integer NUM_FIVE = 5;
         Integer NUM_SIX = 6;
         Integer NUM_SEVEN = 7;
         Integer NUM_EIGHT = 8;
         Integer NUM_NINE = 9;
         Integer NUM_TEN = 10;
+    }
+
+    /**
+     *  @Description: 用户管理常量接口
+     *  @author huangy
+     *  @Date 2018/4/11
+     **/
+    public interface UserConstants {
+        /**
+         * 用户类型
+         */
+        String SYSTEM_ADMIN = "0"; //系统管理员
+        String SYSTEM_USER = "1"; //系统用户
+        String GENERAL_USER = "2"; //普通用户
     }
 
 }
