@@ -34,7 +34,7 @@ layui.config({
             limit: 10
         },
         page: {
-            limits: [10]
+            limits: [5, 10, 20, 50, 100]
         },
         id: 'poemUsers',
         done: function (res) {
@@ -91,6 +91,8 @@ layui.config({
                     // width: 200
                 }, {
                     fixed: 'right',
+                    title: '操作',
+                    minWidth: 163,
                     // width: 178,
                     align: 'center',
                     toolbar: '#tableBtn'
@@ -244,7 +246,7 @@ layui.config({
             view.innerHTML = html;
         });
         layer.open({
-            title: '编辑',
+            title: '新增',
             type: 1,
             skin: 'layui-layer-molv layer-btn-class',
             resize: false,
