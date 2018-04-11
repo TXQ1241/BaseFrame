@@ -3,39 +3,41 @@ package cn.com.BaseFrame.Api;
 import java.util.Date;
 
 public class User {
-    private String id;
+    private String id; //id
 
-    private String ids;
+    private String ids; //id集合
 
-    private String account;
+    private String account; //账号
 
-    private String password;
+    private String password; //密码
 
-    private String userName;
+    private String userName; //用户名
 
-    private Integer age;
+    private Integer age; //年龄
 
-    private String email;
+    private String email; //电子邮件
 
-    private String avatar;
+    private String avatar; //头像
 
-    private String profession;
+    private String profession; //职业
 
-    private String description;
+    private String description; //描述信息
 
-    private String qqNum;
+    private String qqNum; //qq号
 
-    private Date createTime;
+    private Date createTime; //创建时间
 
-    private Date updateTime;
+    private Date updateTime; //更新时间
 
-    private Date loginTime;
+    private Date loginTime; //登录时间
 
     private Date expDate;
 
-    private Date birthday;
+    private Date birthday; //生日
 
-    private String phoneNum;
+    private String phoneNum; //电话号码
+
+    private String userType; //用户类型 0：表示系统管理员， 1：表示系统新增用户， 2：表示普通用户
 
     public String getId() {
         return id;
@@ -171,5 +173,13 @@ public class User {
 
     public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

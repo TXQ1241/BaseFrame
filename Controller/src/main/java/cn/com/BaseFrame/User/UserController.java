@@ -100,6 +100,8 @@ public class UserController extends BaseController {
                 userService.update(user);
             } else {
                 user.setId(StringUtils.getUUID());
+                //系统新增的用户
+                user.setUserType(Constant.UserConstants.SYSTEM_USER);
                 user.setCreateTime(new Date());
                 userService.save(user);
             }

@@ -18,10 +18,11 @@
         <result column="exp_date" property="expDate" jdbcType="DATE" />
         <result column="birthday" property="birthday" jdbcType="DATE" />
         <result column="phone_num" property="phoneNum" jdbcType="VARCHAR" />
+        <result column="user_type" property="userType" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List" >
         id, account, password, user_name, age, email, avatar, profession, description, qq_num,
-        create_time, update_time, login_time, exp_date, birthday, phone_num
+        create_time, update_time, login_time, exp_date, birthday, phone_num, user_type
     </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
         select
@@ -39,13 +40,13 @@
         avatar, profession, description,
         qq_num, create_time, update_time,
         login_time, exp_date, birthday,
-        phone_num)
+        phone_num, user_type)
         values (#{id,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
         #{userName,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR},
         #{avatar,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
         #{qqNum,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE},
         #{loginTime,jdbcType=DATE}, #{expDate,jdbcType=DATE}, #{birthday,jdbcType=DATE},
-        #{phoneNum,jdbcType=VARCHAR})
+        #{phoneNum,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="cn.com.BaseFrame.Api.User" >
         insert into user
@@ -98,6 +99,9 @@
             <if test="phoneNum != null" >
                 phone_num,
             </if>
+            <if test="userType != null">
+                user_type,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="id != null" >
@@ -147,6 +151,9 @@
             </if>
             <if test="phoneNum != null" >
                 #{phoneNum,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -198,6 +205,9 @@
             <if test="phoneNum != null" >
                 phone_num = #{phoneNum,jdbcType=VARCHAR},
             </if>
+            <if test="userType != null">
+                user_type = #{userType,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
@@ -217,7 +227,8 @@
       login_time = #{loginTime,jdbcType=DATE},
       exp_date = #{expDate,jdbcType=DATE},
       birthday = #{birthday,jdbcType=DATE},
-      phone_num = #{phoneNum,jdbcType=VARCHAR}
+      phone_num = #{phoneNum,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 
