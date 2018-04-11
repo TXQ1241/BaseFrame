@@ -61,7 +61,7 @@ public class UserController extends BaseController {
         Integer pageNum = userVo.getPageNum();
         //设置查询开始的条数(就是从哪条开始查询)
         if(pageNum != null) {
-            userVo.setPageNum((pageNum-1)*10);
+            userVo.setPageNum((pageNum-1)*userVo.getPageSize());
         }
         try {
             List<User> userList = userService.getUsers(userVo);
