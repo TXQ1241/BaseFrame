@@ -10,6 +10,8 @@ public class UserVo {
 
     private Integer age;//用户年龄
 
+    private String userTye;//用户类型，0：系统管理员，1：系统用户，2：普通用户
+
     private Integer pageNum;//页数
 
     private Integer pageSize;//每页条数
@@ -44,6 +46,14 @@ public class UserVo {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getUserTye() {
+        return userTye;
+    }
+
+    public void setUserTye(String userTye) {
+        this.userTye = userTye;
     }
 
     public Integer getPageNum() {
