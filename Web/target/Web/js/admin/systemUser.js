@@ -42,9 +42,6 @@ layui.use(['table'], function () {
         cols: [
             [ //表头
                 {
-                    type: 'checkbox'
-                },
-                {
                     field: 'account',
                     title: '账号',
                     // width: 150
