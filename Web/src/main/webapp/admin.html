@@ -15,6 +15,19 @@
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
             <div class="layui-logo">用户管理系统</div>
+            <ul class="layui-nav">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">我</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;">修改信息</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">退出登录</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
 
         <div class="layui-side layui-bg-black">
@@ -76,7 +89,7 @@
             <td>{{ item.title }}</td>
             <td>{{ item.val }}</td>
         </tr>
-        {{# }); }} 
+        {{# }); }}
     </table>
 </script>
 
@@ -86,13 +99,15 @@
         {{# layui.each(d, function(index, item){ }}
         <tr>
             <td>{{ item.title }}</td>
-            <td><input type="text" data-type="{{item.field}}" value="{{ item.val }}" class="{{item.className}}"></td>
+            <td>
+                <input type="text" data-type="{{item.field}}" value="{{ item.val }}" class="{{item.className}}">
+            </td>
         </tr>
-        {{# }); }} 
+        {{# }); }}
     </table>
 </script>
 <script src="./libs/js/jquery.min.js"></script>
-<script src="./libs/layui/layui.js"></script>
+<script src="./libs/layui/layui.all.js"></script>
 <script src="./js/ServerUtil.js"></script>
 <script src="./js/admin/admin.js"></script>
 

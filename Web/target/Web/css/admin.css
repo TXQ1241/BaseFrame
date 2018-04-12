@@ -16,3 +16,9 @@
 
 body .layer-btn-class .layui-layer-btn .layui-layer-btn1 {
   background-color: #fff; }
+
+.layui-header {
+  position: relative; }
+  .layui-header .layui-nav {
+    position: absolute;
+    right: 40px; }

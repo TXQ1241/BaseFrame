@@ -40,3 +40,12 @@ body {
         }
     }
 }
+
+.layui-header {
+    position: relative;
+
+    .layui-nav {
+        position: absolute;
+        right: 40px;
+    }
+}
