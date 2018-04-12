@@ -4,9 +4,10 @@ $('#login').loginPanel({
         textImgSrc: './images/login/l-icon.png'
     },
     user: {
-        isTab: true,
-        leftText: '扫码登录',
-        rightText: '账户登录'
+        // isTab: true,
+        // leftText: '扫码登录',
+        // rightText: '账户登录'
+        text: '账户登录'
     },
     // user: {
     //     isTab: false,
