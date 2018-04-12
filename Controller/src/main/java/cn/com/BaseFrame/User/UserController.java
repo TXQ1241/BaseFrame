@@ -32,25 +32,6 @@ public class UserController extends BaseController {
     IUserService userService;
 
     /**
-     *  @Description: 跳转到用户管理页面
-     *  @author huangy
-     *  @Date 2018/3/20
-     *  @method toUsers
-     *  params  []
-     *  @return java.lang.String
-     *  @exception
-     **/
-    @RequestMapping("view")
-    public String toUsers(String userType) {
-        String page = "admin";
-        if(userType != null && userType.
-                equals(Constant.UserConstants.SYSTEM_USER)){
-            page = "systemUser";
-        }
-        return page;
-    }
-
-    /**
      *  @Description: 通过用户对象获取用户数据
      *  @author huangy
      *  @Date 2018/3/20
