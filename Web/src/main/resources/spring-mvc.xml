@@ -40,7 +40,7 @@
     <!-- 设置登录拦截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/user/*"/>
+            <mvc:mapping path="/admin.html"/>
             <!-- 登录拦截器 -->
             <bean class="cn.com.BaseFrame.Interceptor.EncapsulationContext"></bean>
         </mvc:interceptor>

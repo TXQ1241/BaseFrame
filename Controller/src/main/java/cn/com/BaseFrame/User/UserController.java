@@ -31,6 +31,17 @@ public class UserController extends BaseController {
     @Qualifier("userService")
     IUserService userService;
 
+    @RequestMapping("view")
+    public String toUserList(String userType){
+        String page = "admin";
+        if (userType != null && Constant.UserConstants.GENERAL_USER.
+                equals(userType)) {
+            page = "systemUser";
+        }
+        return page;
+    }
+
+
     /**
      *  @Description: 通过用户对象获取用户数据
      *  @author huangy
