@@ -64,4 +64,15 @@ public interface IUserService {
      *  @exception
      **/
     void deleteUsersByIds(String[] userIds);
+
+    /**
+     *  @Description: 通过 user对象获取用户
+     *  @author huangy
+     *  @Date 2018/4/12
+     *  @method getUserByAccount
+     *  params  [user] 用户对象
+     *  @return cn.com.BaseFrame.Api.User
+     *  @exception
+     **/
+    User getUserByAccount(User user);
 }

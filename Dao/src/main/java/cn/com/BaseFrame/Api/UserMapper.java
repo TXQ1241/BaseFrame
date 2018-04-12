@@ -74,4 +74,15 @@ public interface UserMapper {
      *  @exception
      **/
     void deleteUsersByIds(String[] userIds);
+
+    /**
+     *  @Description: 通过用户对象获取用户
+     *  @author huangy
+     *  @Date 2018/4/12
+     *  @method getUserByAccount
+     *  params  [user] 用户对象
+     *  @return User 用户对象
+     *  @exception
+     **/
+    User getUserByAccount(User user);
 }
