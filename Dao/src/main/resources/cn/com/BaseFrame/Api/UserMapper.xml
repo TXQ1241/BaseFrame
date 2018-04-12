@@ -246,6 +246,9 @@
             <if test="age != null">
                 and u.age = #{age}
             </if>
+            <if test="userType != null and userType != ''">
+                and u.user_type = #{userType}
+            </if>
         </where>
         limit #{pageNum},#{pageSize}
     </select>
@@ -274,6 +277,9 @@
             </if>
             <if test="age != null">
                 and u.age = #{age}
+            </if>
+            <if test="userType != null and userType != ''">
+                and u.user_type = #{userType}
             </if>
         </where>
     </select>
