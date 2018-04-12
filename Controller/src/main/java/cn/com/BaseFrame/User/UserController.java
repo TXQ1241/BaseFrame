@@ -41,8 +41,13 @@ public class UserController extends BaseController {
      *  @exception
      **/
     @RequestMapping("view")
-    public String toUsers() {
-        return "admin";
+    public String toUsers(String userType) {
+        String page = "admin";
+        if(userType != null && userType.
+                equals(Constant.UserConstants.SYSTEM_USER)){
+            page = "systemUser";
+        }
+        return page;
     }
 
     /**
