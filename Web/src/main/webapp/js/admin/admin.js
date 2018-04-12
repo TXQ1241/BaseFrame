@@ -143,7 +143,7 @@ layui.use(['table'], function () {
             });
         } else if (obj.event === 'del') {
             layer.confirm('真的删除么', {skin: 'layui-layer-molv'}, function (index) {
-                ServerUtil.api('delete', {
+                ServerUtil.api('user-manager/user/', 'delete', {
                     ids: data.id
                 }, function () {
                     // obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
@@ -179,7 +179,7 @@ layui.use(['table'], function () {
                     $('.table-edit-input').each(function (index, val) {
                         data[val.dataset.type] = $(val).val();
                     });
-                    ServerUtil.api('save', data, function () {
+                    ServerUtil.api('user-manager/user/', 'save', data, function () {
                         //同步更新缓存对应的值
                         obj.update(data);
                         // tableReload();
@@ -222,7 +222,7 @@ layui.use(['table'], function () {
                 userIdsArr.push(val.id);
             });
             var userIdsStr = userIdsArr.join(',');
-            ServerUtil.api('delete', {
+            ServerUtil.api('user-manager/user/', 'delete', {
                 ids: userIdsStr
             }, function () {
                 layer.close(index);
@@ -259,7 +259,7 @@ layui.use(['table'], function () {
                 $('.table-add-input').each(function (index, val) {
                     obj[val.dataset.type] = $(val).val();
                 });
-                ServerUtil.api('save', obj, function () {
+                ServerUtil.api('user-manager/user/', 'save', obj, function () {
                     tableReload();
                     layer.close(index);
                 });

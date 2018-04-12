@@ -166,7 +166,7 @@ layui.use(['table'], function () {
                     $('.table-edit-input').each(function (index, val) {
                         data[val.dataset.type] = $(val).val();
                     });
-                    ServerUtil.api('save', data, function () {
+                    ServerUtil.api('user-manager/user/', 'save', data, function () {
                         //同步更新缓存对应的值
                         obj.update(data);
                         // tableReload();

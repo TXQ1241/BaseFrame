@@ -18,9 +18,9 @@ ServerUtil = {
         return u;
     },
 
-    api: function (method, data, success, error) {
+    api: function (model, method, data, success, error) {
 
-        var url = ServerUtil.url() + 'user-manager/user/' + method;
+        var url = ServerUtil.url() + model + method;
         $.ajax({
             type: "post",
             contentType: 'application/json; charset=UTF-8',

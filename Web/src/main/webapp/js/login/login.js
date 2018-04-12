@@ -17,7 +17,12 @@ $('#login').loginPanel({
     passwordPlaceholder: '密码',
     forgetPwdText: '忘记密码',
     forgetPwdSrc: 'javascript:void(0)',
-    submitFuc: function (username, password) {
-
+    submitFuc: function (accout, password) {
+        ServerUtil.api('user-manager/login/', 'login', {
+            accout: accout,
+            password: password
+        }, function (data) {
+            
+        });
     }
 });
