@@ -1,10 +1,9 @@
 //JavaScript代码区域
-layui.config({
-    // debug: true //用于开启调试模式，默认false，如果设为true，则JS模块的节点会保留在页面
-}).use(['table'], function () {
+layui.use(['table'], function () {
     var table = layui.table;
     var $ = layui.$;
     var laytpl = layui.laytpl;
+    var element = layui.element;
     var tableTitle = {
         account: '账号',
         password: '密码',

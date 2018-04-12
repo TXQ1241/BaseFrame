@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>admin</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../iconfont/iconfont.css">
-    <link rel="stylesheet" href="../libs/layui/css/layui.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./libs/layui/css/layui.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
 
 <body class="layui-layout-body">
@@ -17,14 +17,14 @@
             <div class="layui-logo">用户管理系统</div>
         </div>
 
-        <div class="layui-side layui-bg-black">
+        <div class="layui-side layui-bg-cyan">
             <div class="layui-side-scroll">
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="test">
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
                     <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">系统用户</a>
                     </li>
-                    <li class="layui-nav-item">
+                    <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">普通用户</a>
                     </li>
                 </ul>
@@ -48,8 +48,6 @@
                     <input class="layui-input" name="age" id="ageReload" autocomplete="off">
                 </div>
                 <button class="layui-btn" data-type="reload" id="searchBtn">搜索</button>
-                <button class="layui-btn layui-btn-danger" id="deleteUsers">批量删除</button>
-                <button class="layui-btn" id="addUser">新增</button>
             </div>
             <table id="datalist" lay-filter="tableBtn"></table>
         </div>
@@ -65,7 +63,6 @@
 <script type="text/html" id="tableBtn">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
 <!-- 详情面板 -->
@@ -91,9 +88,9 @@
         {{# }); }} 
     </table>
 </script>
-<script src="../libs/js/jquery.min.js"></script>
-<script src="../libs/layui/layui.js"></script>
-<script src="../js/ServerUtil.js"></script>
-<script src="../js/admin/admin.js"></script>
+<script src="./libs/js/jquery.min.js"></script>
+<script src="./libs/layui/layui.js"></script>
+<script src="./js/ServerUtil.js"></script>
+<script src="./js/admin/systemUser.js"></script>
 
 </html>

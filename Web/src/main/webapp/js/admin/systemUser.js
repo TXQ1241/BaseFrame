@@ -138,16 +138,6 @@ layui.use(['table'], function () {
                 // area: ['500px', '300px'],
                 content: $('#tableBox')
             });
-        } else if (obj.event === 'del') {
-            layer.confirm('真的删除么', {skin: 'layui-layer-molv'}, function (index) {
-                ServerUtil.api('delete', {
-                    ids: data.id
-                }, function () {
-                    // obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
-                    tableReload();
-                    layer.close(index);
-                });
-            });
         } else if (obj.event === 'edit') {
             var userList = [];
             for (var attr in data) {
@@ -203,68 +193,5 @@ layui.use(['table'], function () {
         obj.userName = userName
         obj.age = age
         tableReload(obj);
-    });
-    //批量删除
-    $('#deleteUsers').on('click', function () {
-        var checkStatus = table.checkStatus('poemUsers'); //获取复选框信息
-        if (checkStatus.data.length == 0) {
-            layer.confirm('请选择要删除的行');
-            return;
-        }
-        var str = '确定删除这' + checkStatus.data.length + '条信息吗';
-        layer.confirm(str, function (index) {
-            var userIdsArr = [];
-            checkStatus.data.forEach(function (val) {
-                userIdsArr.push(val.id);
-            });
-            var userIdsStr = userIdsArr.join(',');
-            ServerUtil.api('delete', {
-                ids: userIdsStr
-            }, function () {
-                layer.close(index);
-                tableReload();
-            });
-        });
-    });
-    //新增
-    $('#addUser').on('click', function () {
-        var userList = [];
-        var obj = {};
-        for (var attr in tableTitle) {
-            obj[attr] = '';
-            var dataObj = {};
-            dataObj.title = tableTitle[attr];
-            dataObj.val = '';
-            dataObj.field = attr;
-            dataObj.className = 'table-add-input';
-            userList.push(dataObj);
-        }
-        var getTpl = tableEdit.innerHTML,
-            view = document.getElementById('tableBox');
-        laytpl(getTpl).render(userList, function (html) {
-            view.innerHTML = html;
-        });
-        layer.open({
-            title: '新增',
-            type: 1,
-            skin: 'layui-layer-molv layer-btn-class',
-            resize: false,
-            btn: ['确定', '取消'],
-            yes: function (index, layero) {
-                //按钮【按钮一】的回调
-                $('.table-add-input').each(function (index, val) {
-                    obj[val.dataset.type] = $(val).val();
-                });
-                ServerUtil.api('save', obj, function () {
-                    tableReload();
-                    layer.close(index);
-                });
-            },
-            btn2: function (index, layero) {
-                //按钮【按钮二】的回调
-                layer.close(index);
-            },
-            content: $('#tableBox')
-        });
     });
 });
