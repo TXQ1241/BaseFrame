@@ -36,4 +36,14 @@
         <property name="order" value="0"></property>
         <property name="contentType" value="text/html;charset=UTF-8"></property>
     </bean>
+
+    <!-- 设置登录拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/*"/>
+            <!-- 登录拦截器 -->
+            <bean class="cn.com.BaseFrame.Interceptor.EncapsulationContext"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

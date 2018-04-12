@@ -1,5 +1,6 @@
 package cn.com.BaseFrame.Interceptor;
 
+import cn.com.BaseFrame.Api.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,12 +24,12 @@ public class EncapsulationContext implements HandlerInterceptor {
      * @method params
      **/
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String UUID = (String) request.getSession().getAttribute("UUID");
-        if (UUID != null && !"".equals(UUID)) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
             return true;
         } else {
             //如果没有登录,就返回到登录的页面
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            response.sendRedirect("http://localhost:8080/user-manager/login.html");
             return false;
         }
 
