@@ -10,7 +10,7 @@ public class UserVo {
 
     private Integer age;//用户年龄
 
-    private String userTye;//用户类型，0：系统管理员，1：系统用户，2：普通用户
+    private String userType;//用户类型，0：系统管理员，1：系统用户，2：普通用户
 
     private Integer pageNum;//页数
 
@@ -48,12 +48,12 @@ public class UserVo {
         this.age = age;
     }
 
-    public String getUserTye() {
-        return userTye;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setUserTye(String userTye) {
-        this.userTye = userTye;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public Integer getPageNum() {
