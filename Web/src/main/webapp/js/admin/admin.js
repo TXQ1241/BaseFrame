@@ -271,4 +271,9 @@ layui.use(['table'], function () {
             content: $('#tableBox')
         });
     });
+
+    //菜单跳转
+    $('#averageUser').on('click', function () {
+        window.location.href = window.location.origin + window.location.pathname + '?userType=2';
+    });
 });

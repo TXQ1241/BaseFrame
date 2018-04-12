@@ -195,4 +195,9 @@ layui.use(['table'], function () {
         obj.userType = 1;
         tableReload(obj);
     });
+
+    //菜单跳转
+    $('#systemUser').on('click', function () {
+        window.location.href = window.location.origin + window.location.pathname + '?userType=1';
+    });
 });
