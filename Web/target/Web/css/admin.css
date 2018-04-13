@@ -7,6 +7,9 @@
 .user-table {
   padding: 15px; }
 
+.user-login {
+  display: none; }
+
 .template-box {
   padding: 0 15px; }
   .template-box table tr:hover {
