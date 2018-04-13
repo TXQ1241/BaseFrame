@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -109,10 +111,17 @@ public class LoginController extends BaseController {
      *  @exception
      **/
     @RequestMapping("logout")
-    public String logout(HttpServletRequest request) {
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
         //将session中用户的登录信息设置为空
         request.getSession().setAttribute(Constant.CURRENT_USER,null);
-        return "login";
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"
+                +request.getServerPort()+path+"/login.html";
+        try {
+            response.sendRedirect(basePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
