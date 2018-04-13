@@ -17,6 +17,54 @@ layui.use(['table'], function () {
         birthday: '生日',
         phoneNum: '手机号'
     };
+    var userInfo;
+    ServerUtil.api('user-manager/user/', 'getUserInfo', {}, function (data) {
+        userInfo = data;
+        $('#userLoginAccount').text(data.account);
+        $('#userLogin').show();
+    });
+    $('#changeUserInfo').on('click', function () {
+        var userList = [];
+        for (var attr in userInfo) {
+            if (tableTitle[attr]) {
+                var dataObj = {};
+                dataObj.title = tableTitle[attr];
+                dataObj.val = userInfo[attr] || '';
+                dataObj.field = attr;
+                dataObj.className = 'table-edit-input';
+                userList.push(dataObj);
+            }
+        }
+        var getTpl = tableEdit.innerHTML,
+            view = document.getElementById('tableBox');
+        laytpl(getTpl).render(userList, function (html) {
+            view.innerHTML = html;
+        });
+        layer.open({
+            title: '修改信息',
+            type: 1,
+            skin: 'layui-layer-molv layer-btn-class',
+            resize: false,
+            btn: ['确定', '取消'],
+            yes: function (index, layero) {
+                //按钮【按钮一】的回调
+                $('.table-edit-input').each(function (index, val) {
+                    userInfo[val.dataset.type] = $(val).val();
+                });
+                ServerUtil.api('user-manager/user/', 'save', userInfo, function () {
+                    layer.close(index);
+                });
+            },
+            btn2: function (index, layero) {
+                //按钮【按钮二】的回调
+                layer.close(index);
+            },
+            content: $('#tableBox')
+        });
+    });
+    $('#logout').on('click', function () {
+        window.location.href = window.location.origin + '/user-manager/login/logout';
+    });
     //第一个实例
     table.render({
         elem: '#datalist',
