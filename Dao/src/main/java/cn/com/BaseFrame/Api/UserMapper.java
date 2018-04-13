@@ -81,8 +81,8 @@ public interface UserMapper {
      *  @Date 2018/4/12
      *  @method getUserByAccount
      *  params  [user] 用户对象
-     *  @return User 用户对象
+     *  @return List<User> 用户列表
      *  @exception
      **/
-    User getUserByAccount(User user);
+    List<User> getUserByAccount(User user);
 }

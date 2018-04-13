@@ -70,9 +70,9 @@ public interface IUserService {
      *  @author huangy
      *  @Date 2018/4/12
      *  @method getUserByAccount
-     *  params  [user] 用户对象
-     *  @return cn.com.BaseFrame.Api.User
+     *  params  [userVo] 用户对象
+     *  @return List<User>用户集合
      *  @exception
      **/
-    User getUserByAccount(User user);
+    List<User> getUserByAccount(User user);
 }

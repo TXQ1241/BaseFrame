@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -58,21 +59,25 @@ public class LoginController extends BaseController {
      **/
     @RequestMapping("login")
     @ResponseBody
-    public Map<String, String> executeLogin(HttpServletRequest request, @RequestBody User user) {
+    public Map<String, String> executeLogin(HttpServletRequest request,@RequestBody User user) {
         //登录状态
         String status;
         //登录信息
         String message;
         Map<String, String> msgMap = new HashMap<String, String>();
+        User userInfo = null;
         try{
-            User userInfo = userService.getUserByAccount(user);
+            List<User> userList = userService.getUserByAccount(user);
+            if(userList!=null && userList.size() > 0) {
+                userInfo = userList.get(0);
+            }
             if (userInfo != null) {
                 if (user.getPassword().equals(userInfo.getPassword())){
                     status = Constant.AjaxStatus.AJAX_SUCCESS;
                     message = "登录成功";
                     //将用户信息放入session域中
                     request.getSession().setAttribute("User", userInfo);
-                    msgMap.put("userType", user.getUserType());
+                    msgMap.put("userType", userInfo.getUserType());
                 } else {
                     status = Constant.AjaxStatus.AJAX_FAIL;
                     message = "密码错误";

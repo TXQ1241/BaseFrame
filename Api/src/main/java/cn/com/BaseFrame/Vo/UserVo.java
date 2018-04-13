@@ -6,6 +6,8 @@ public class UserVo {
 
     private String account;//用户账号
 
+    private String password;//密码
+
     private String userName;//用户姓名
 
     private Integer age;//用户年龄
@@ -30,6 +32,14 @@ public class UserVo {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUserName() {
