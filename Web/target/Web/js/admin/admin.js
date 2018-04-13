@@ -34,7 +34,7 @@ layui.use(['table'], function () {
             limit: 10
         },
         where: {
-            userType: 2
+            userType: 1
         },
         page: {
             limits: [5, 10, 20, 50, 100]
@@ -206,7 +206,7 @@ layui.use(['table'], function () {
         obj.account = account;
         obj.userName = userName;
         obj.age = age;
-        obj.userType = 2;
+        obj.userType = 1;
         tableReload(obj);
     });
     //批量删除

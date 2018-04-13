@@ -37,7 +37,7 @@ layui.use(['table'], function () {
             limits: [5, 10, 20, 50, 100]
         },
         where: {
-            userType: 1
+            userType: 2
         },
         id: 'poemUsers',
         done: function (res) {
@@ -193,7 +193,7 @@ layui.use(['table'], function () {
         obj.account = account;
         obj.userName = userName;
         obj.age = age;
-        obj.userType = 1;
+        obj.userType = 2;
         tableReload(obj);
     });
 
