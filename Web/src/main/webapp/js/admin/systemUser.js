@@ -1,7 +1,8 @@
 //JavaScript代码区域
+var $;
 layui.use(['table'], function () {
     var table = layui.table;
-    var $ = layui.$;
+    $ = layui.$;
     var laytpl = layui.laytpl;
     var element = layui.element;
     var tableTitle = {

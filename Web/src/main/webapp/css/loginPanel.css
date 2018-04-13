@@ -85,6 +85,23 @@
         padding: 20px 0; }
       .login-panel .main-box .user .right-tab-content {
         padding: 20px; }
+        .login-panel .main-box .user .right-tab-content .error-message {
+          background: #ffebeb;
+          color: #e4393c;
+          border: 1px solid #faccc6;
+          line-height: 15px;
+          height: auto;
+          position: relative;
+          padding: 3px 10px 3px 40px;
+          margin: -15px 0 5px;
+          display: none; }
+          .login-panel .main-box .user .right-tab-content .error-message span {
+            color: #e4393c;
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            display: block;
+            margin-top: -8px; }
         .login-panel .main-box .user .right-tab-content .user-name, .login-panel .main-box .user .right-tab-content .password {
           width: 100%; }
           .login-panel .main-box .user .right-tab-content .user-name .user-name-input-box, .login-panel .main-box .user .right-tab-content .user-name .password-input-box, .login-panel .main-box .user .right-tab-content .password .user-name-input-box, .login-panel .main-box .user .right-tab-content .password .password-input-box {

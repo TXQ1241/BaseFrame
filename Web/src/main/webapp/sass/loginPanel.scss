@@ -114,6 +114,27 @@
             .right-tab-content {
                 padding: 20px;
 
+                .error-message {
+                    background: #ffebeb;
+                    color: #e4393c;
+                    border: 1px solid #faccc6;
+                    line-height: 15px;
+                    height: auto;
+                    position: relative;
+                    padding: 3px 10px 3px 40px;
+                    margin: -15px 0 5px;
+                    display: none;
+
+                    span {
+                        color: rgb(228, 57, 60);
+                        position: absolute;
+                        top: 50%;
+                        left: 10px;
+                        display: block;
+                        margin-top: -8px;
+                    }
+                }
+
                 .user-name,.password {
                     width: 100%;
 
