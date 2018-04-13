@@ -76,7 +76,7 @@ public class LoginController extends BaseController {
                     status = Constant.AjaxStatus.AJAX_SUCCESS;
                     message = "登录成功";
                     //将用户信息放入session域中
-                    request.getSession().setAttribute("User", userInfo);
+                    request.getSession().setAttribute("user", userInfo);
                     msgMap.put("userType", userInfo.getUserType());
                 } else {
                     status = Constant.AjaxStatus.AJAX_FAIL;
