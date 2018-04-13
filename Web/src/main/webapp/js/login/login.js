@@ -23,12 +23,13 @@ $('#login').loginPanel({
         }, function (data) {
             if (data && data.status && data.status == '1') {
                 if (data.userType == '0') {
-
+                    window.location.href = window.location.origin + '/user-manager/user/view';
                 } else {
                     window.location.href = window.location.origin + '/user-manager/user/view';
                 }
             } else {
-
+                $('.error-message').show();
+                $('.error-message .text').text(data.msg);
             }
         });
     }

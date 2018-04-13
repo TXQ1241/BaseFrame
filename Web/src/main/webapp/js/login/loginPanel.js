@@ -87,6 +87,7 @@ $.widget("panel.loginPanel", {
     _createRightTabContent: function () {
         var self = this;
         this.rightTabContent = $('<div class="right-tab-content"></div>').appendTo(this.userBox);
+        var errorMsg = $('<div class="error-message"><span class="iconfont icon-error-circle"></span><div class="text"></div></div>').appendTo(this.rightTabContent);
         var userName = $('<div class="user-name"></div>').appendTo(this.rightTabContent);
         var userNameInputBox = $('<div class="user-name-input-box"></div>').appendTo(userName);
         var userNameIcon = $('<span class="iconfont icon-username label"></span>').appendTo(userNameInputBox);
@@ -115,9 +116,9 @@ $.widget("panel.loginPanel", {
         var submitBtnBox = $('<div class="submit-btn-box"></div>').appendTo(this.rightTabContent);
         var submitBtn = $('<button>登&nbsp;&nbsp;&nbsp;&nbsp;录</button>').appendTo(submitBtnBox);
         submitBtn.on('click', function () {
-            var username = userNameinput.val();
+            var account = userNameinput.val();
             var password = passwordinput.val();
-            self.options.submitFuc(username, password);
+            self.options.submitFuc(account, password);
         });
         this.rightTabContent.hide();
     },
