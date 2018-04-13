@@ -89,6 +89,7 @@ public class UserController extends BaseController {
      *  @exception
      **/
     @RequestMapping("getUserInfo")
+    @ResponseBody
     public User getUserInfo (HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(Constant.CURRENT_USER);
         return user;
