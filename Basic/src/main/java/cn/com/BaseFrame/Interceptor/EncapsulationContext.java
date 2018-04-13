@@ -29,7 +29,10 @@ public class EncapsulationContext implements HandlerInterceptor {
             return true;
         } else {
             //如果没有登录,就返回到登录的页面
-            response.sendRedirect("http://localhost:8080/user-manager/login.html");
+            String path = request.getContextPath();
+            String basePath = request.getScheme()+"://"+request.getServerName()+":"
+                    +request.getServerPort()+path+"/login.html";
+            response.sendRedirect(basePath);
             return false;
         }
 

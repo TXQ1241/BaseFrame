@@ -99,4 +99,9 @@ public class LoginController extends BaseController {
 
     }
 
+    @RequestMapping("home")
+    public String goToIndex() {
+        return "index";
+    }
+
 }
