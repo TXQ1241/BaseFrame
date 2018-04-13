@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +77,21 @@ public class UserController extends BaseController {
             e.printStackTrace();
         }
         return dataVo;
+    }
+
+    /**
+     *  @Description: 获取当前用户信息
+     *  @author huangy
+     *  @Date 2018/4/13
+     *  @method getUserInfo
+     *  params  []
+     *  @return User
+     *  @exception
+     **/
+    @RequestMapping("getUserInfo")
+    public User getUserInfo (HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute(Constant.CURRENT_USER);
+        return user;
     }
 
     /**
