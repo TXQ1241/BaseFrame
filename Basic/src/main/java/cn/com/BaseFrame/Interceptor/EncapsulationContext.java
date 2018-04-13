@@ -1,6 +1,7 @@
 package cn.com.BaseFrame.Interceptor;
 
 import cn.com.BaseFrame.Api.User;
+import cn.com.BaseFrame.Pojo.constant.Constant;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,7 +25,7 @@ public class EncapsulationContext implements HandlerInterceptor {
      * @method params
      **/
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        User user = (User) request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute(Constant.CURRENT_USER);
         if (user != null) {
             return true;
         } else {

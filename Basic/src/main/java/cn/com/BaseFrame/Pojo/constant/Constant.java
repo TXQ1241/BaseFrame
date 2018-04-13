@@ -13,6 +13,11 @@ public class Constant {
     public static final Integer ZERO_NUM = 0;
 
     /**
+     * 当前用户
+     */
+    public static final String CURRENT_USER = "user";
+
+    /**
      * 请求状态定义
      * @author huangy
      * @create 2018-03-16 18:50
