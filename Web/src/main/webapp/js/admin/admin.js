@@ -17,11 +17,15 @@ layui.use(['table'], function () {
         birthday: '生日',
         phoneNum: '手机号'
     };
+    var userInfo;
+    ServerUtil.api('user-manager/user/', 'getUserInfo', {}, function (data) {
+        console.log(data);
+    });
     //第一个实例
     table.render({
         elem: '#datalist',
         // height: 315,
-        url: 'http://localhost:8080/user-manager/user/userList',
+        url: window.location.origin + '/user-manager/user/userList',
         method: 'post',
         response: {
             statusCode: 1,

@@ -21,7 +21,7 @@ layui.use(['table'], function () {
     table.render({
         elem: '#datalist',
         // height: 315,
-        url: 'http://localhost:8080/user-manager/user/userList',
+        url: window.location.origin + '/user-manager/user/userList',
         method: 'post',
         response: {
             statusCode: 1,
