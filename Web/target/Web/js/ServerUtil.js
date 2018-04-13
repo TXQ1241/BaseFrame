@@ -28,16 +28,7 @@ ServerUtil = {
             data: JSON.stringify(data),
             dataType: "json",
             success: function (result) {
-                if (result.error) {
-                    if (error) {
-                        error(result.error);
-                    } else {
-                        console.error(result.error);
-                        ServerUtil.alert(result.error);
-                    }
-                } else {
-                    success && success(result.value);
-                }
+                success && success(result);
             },
             error: function (a, b, c) {
                 if (error) {
