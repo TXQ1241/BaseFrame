@@ -74,5 +74,5 @@ public interface IUserService {
      *  @return List<User>用户集合
      *  @exception
      **/
-    List<User> getUserByAccount(User user);
+    List<User> getUser(User user);
 }

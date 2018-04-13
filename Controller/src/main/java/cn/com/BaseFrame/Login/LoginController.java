@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +70,7 @@ public class LoginController extends BaseController {
         Map<String, String> msgMap = new HashMap<String, String>();
         User userInfo = null;
         try{
-            List<User> userList = userService.getUserByAccount(user);
+            List<User> userList = userService.getUser(user);
             if(userList!=null && userList.size() > 0) {
                 userInfo = userList.get(0);
             }
@@ -77,6 +78,9 @@ public class LoginController extends BaseController {
                 if (user.getPassword().equals(userInfo.getPassword())){
                     status = Constant.AjaxStatus.AJAX_SUCCESS;
                     message = "登录成功";
+                    //更新用户的登录时间
+                    userInfo.setLoginTime(new Date());
+                    userService.update(userInfo);
                     //将用户信息放入session域中
                     request.getSession().setAttribute(Constant.CURRENT_USER, userInfo);
                     msgMap.put("userType", userInfo.getUserType());

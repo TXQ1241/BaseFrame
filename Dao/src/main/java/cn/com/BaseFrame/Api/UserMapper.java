@@ -84,5 +84,5 @@ public interface UserMapper {
      *  @return List<User> 用户列表
      *  @exception
      **/
-    List<User> getUserByAccount(User user);
+    List<User> getUser(User user);
 }

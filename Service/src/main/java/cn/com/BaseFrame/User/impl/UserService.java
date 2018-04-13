@@ -42,7 +42,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> getUserByAccount(User user) { return userMapper.getUserByAccount(user);}
+    public List<User> getUser(User user) { return userMapper.getUser(user);}
 
     @Override
     public Integer getUserCount(UserVo userVo) {

@@ -92,6 +92,14 @@ public class UserController extends BaseController {
     @ResponseBody
     public User getUserInfo (HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(Constant.CURRENT_USER);
+        User userInfo = new User();
+        if(user != null) {
+            userInfo.setId(user.getId());
+        }
+        List<User> userList = userService.getUser(user);
+        if (user != null && userList.size() > 0) {
+            user = userList.get(0);
+        }
         return user;
     }
 

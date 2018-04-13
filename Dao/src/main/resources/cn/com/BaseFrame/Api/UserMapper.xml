@@ -254,10 +254,13 @@
     </select>
 
     <!-- 通过用户对象获取用户 -->
-    <select id="getUserByAccount" resultMap="BaseResultMap" resultType="cn.com.BaseFrame.Vo.UserVo" parameterType="cn.com.BaseFrame.Api.User" >
+    <select id="getUser" resultMap="BaseResultMap" resultType="cn.com.BaseFrame.Vo.UserVo" parameterType="cn.com.BaseFrame.Api.User" >
         select *
         from user u
         <where>
+            <if test="id != null and id != ''">
+                and u.id = #{id}
+            </if>
             <if test="account != null and account != ''">
                 and u.account = #{account}
             </if>
