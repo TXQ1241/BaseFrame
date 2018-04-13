@@ -99,6 +99,31 @@ public class LoginController extends BaseController {
 
     }
 
+    /**
+     *  @Description: 注销/退出
+     *  @author huangy
+     *  @Date 2018/4/13
+     *  @method logout
+     *  params  [request]
+     *  @return String 登录页面
+     *  @exception
+     **/
+    @RequestMapping("logout")
+    public String logout(HttpServletRequest request) {
+        //将session中用户的登录信息设置为空
+        request.getSession().setAttribute(Constant.CURRENT_USER,null);
+        return "login";
+    }
+
+    /**
+     *  @Description: 跳转到主页
+     *  @author huangy
+     *  @Date 2018/4/13
+     *  @method goToIndex
+     *  params  []
+     *  @return String
+     *  @exception
+     **/
     @RequestMapping("home")
     public String goToIndex() {
         return "index";
