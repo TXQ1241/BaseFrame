@@ -1,6 +1,6 @@
 $('#register').registerPanel({
     logo: {
-        logoImgSrc: './images/login/logo.png',
+        // logoImgSrc: './images/login/logo.png',
         textImgSrc: '欢迎注册',
         rightText: '已有账号？请登录',
         rightTextSrc: './login.html'
@@ -31,9 +31,9 @@ $('#register').registerPanel({
             type: 'password'              
         },
         {
-            label: '邮箱验证',
+            label: '邮箱',
             placeholder: '建议使用常用邮箱',
-            tip: '完成验证后，您可以用该邮箱登录和找回密码',
+            tip: '您可以用该邮箱登录和找回密码',
             isShow: true,
             inputId: 'email',
             type: 'text'                 
@@ -42,17 +42,5 @@ $('#register').registerPanel({
     submitBtnText: '立即注册',
     submitFuc: function (data) {
 
-    },
-    rightContent: [
-        {
-            imgSrc: '',
-            text: '企业用户注册',
-            src: 'javascript:void(0)'
-        },
-        {
-            imgSrc: '',
-            text: '企业用户注册',
-            src: 'javascript:void(0)'
-        },
-    ]
+    }
 });

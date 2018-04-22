@@ -1,6 +1,6 @@
 $('#login').loginPanel({
     logo: {
-        logoImgSrc: './images/login/logo.png',
+        // logoImgSrc: './images/login/logo.png',
         textImgSrc: './images/login/l-icon.png'
     },
     // user: {

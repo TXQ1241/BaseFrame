@@ -38,10 +38,9 @@
     }
 
     .main-box {
-        margin-top: 20px;
-        width: $default-register-width;
-        margin: 0 auto;
-        padding: 50px 190px;
+        width: 400px;
+        margin: 20px auto;
+        // padding: 50px 190px;
         border-bottom: 1px solid $default-input-border-color;
 
         .main-content {

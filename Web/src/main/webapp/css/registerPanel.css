@@ -21,10 +21,8 @@
     height: 1px;
     background-color: #999999; }
   .register-panel .main-box {
-    margin-top: 20px;
-    width: 1200px;
-    margin: 0 auto;
-    padding: 50px 190px;
+    width: 400px;
+    margin: 20px auto;
     border-bottom: 1px solid #dddddd; }
     .register-panel .main-box .main-content {
       margin: 0 auto; }
