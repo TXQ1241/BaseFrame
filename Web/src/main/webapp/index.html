@@ -16,7 +16,15 @@
 	<link href="./css/hmstyle.css" rel="stylesheet" type="text/css" />
 	<script src="./libs/js/jquery.min.js"></script>
 	<script src="./libs/js/amazeui.min.js"></script>
-
+	<style>
+		li.appliance:hover {
+			background-color: white;
+			cursor: pointer;
+		}
+		li.appliance:hover a {
+			color: black;
+		}
+	</style>
 </head>
 
 <body>
@@ -39,7 +47,7 @@
 				</div>
 				<div class="topMessage my-shangcheng">
 					<div class="menu-hd MyShangcheng">
-						<a href="../person/index.html" target="_top">
+						<a href="./information.html" target="_top">
 							<i class="iconfont icon-gerenzhongxin"></i>个人中心</a>
 					</div>
 				</div>
@@ -54,7 +62,7 @@
 				</div>
 				<div class="topMessage favorite">
 					<div class="menu-hd">
-						<a href="../person/collection.html" target="_top">
+						<a href="./collection.html" target="_top">
 							<i class="iconfont icon-shoucangjia"></i>
 							<span>收藏夹</span>
 						</a>
@@ -118,16 +126,13 @@
 						<a href="./index.html">首页</a>
 					</li>
 					<li class="qc">
-						<a href="#">闪购</a>
+						<a href="./seller.html">卖家中心</a>
 					</li>
 					<li class="qc">
-						<a href="#">限时抢</a>
+						<a href="./search.html">买家中心</a>
 					</li>
 					<li class="qc">
-						<a href="#">团购</a>
-					</li>
-					<li class="qc last">
-						<a href="#">大包装</a>
+						<a href="#">数据统计</a>
 					</li>
 				</ul>
 			</div>
@@ -139,252 +144,6 @@
 
 						<div class="category">
 							<ul class="category-list" id="js_climit_li">
-								<li class="appliance js_toggle relative first">
-									<div class="category-info">
-										<h3 class="category-name b-category-name">
-											<i>
-												<img src="./images/index/cake.png">
-											</i>
-											<a class="ml-22" title="点心">点心/蛋糕</a>
-										</h3>
-										<em>&gt;</em>
-									</div>
-									<div class="menu-item menu-in top">
-										<div class="area-in">
-											<div class="area-bg">
-												<div class="menu-srot">
-													<div class="sort-side">
-														<dl class="dl-sort">
-															<dt>
-																<span title="蛋糕">蛋糕</span>
-															</dt>
-															<dd>
-																<a title="蒸蛋糕" href="./search.html">
-																	<span>蒸蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="脱水蛋糕" href="./search.html">
-																	<span>脱水蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="瑞士卷" href="./search.html">
-																	<span>瑞士卷</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="软面包" href="./search.html">
-																	<span>软面包</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="马卡龙" href="./search.html">
-																	<span>马卡龙</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="千层饼" href="./search.html">
-																	<span>千层饼</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="甜甜圈" href="./search.html">
-																	<span>甜甜圈</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="蒸三明治" href="./search.html">
-																	<span>蒸三明治</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="铜锣烧" href="./search.html">
-																	<span>铜锣烧</span>
-																</a>
-															</dd>
-														</dl>
-														<dl class="dl-sort">
-															<dt>
-																<span title="蛋糕">点心</span>
-															</dt>
-															<dd>
-																<a title="蒸蛋糕" href="./search.html">
-																	<span>蒸蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="脱水蛋糕" href="./search.html">
-																	<span>脱水蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="瑞士卷" href="./search.html">
-																	<span>瑞士卷</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="软面包" href="./search.html">
-																	<span>软面包</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="马卡龙" href="./search.html">
-																	<span>马卡龙</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="千层饼" href="./search.html">
-																	<span>千层饼</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="甜甜圈" href="./search.html">
-																	<span>甜甜圈</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="蒸三明治" href="./search.html">
-																	<span>蒸三明治</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="铜锣烧" href="./search.html">
-																	<span>铜锣烧</span>
-																</a>
-															</dd>
-														</dl>
-
-													</div
-												</div>
-											</div>
-										</div>
-									</div>
-									<b class="arrow"></b>
-								</li>
-					
-								<li class="appliance js_toggle relative">
-									<div class="category-info">
-										<h3 class="category-name b-category-name">
-											<i>
-												<img src="./images/index/bamboo.png">
-											</i>
-											<a class="ml-22" title="素食、卤味">素食/卤味</a>
-										</h3>
-										<em>&gt;</em>
-									</div>
-									<div class="menu-item menu-in top">
-										<div class="area-in">
-											<div class="area-bg">
-												<div class="menu-srot">
-													<div class="sort-side">
-														<dl class="dl-sort">
-															<dt>
-																<span title="豆干">豆干</span>
-															</dt>
-															<dd>
-																<a title="蒸蛋糕" href="./search.html">
-																	<span>蒸蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="脱水蛋糕" href="./search.html">
-																	<span>脱水蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="瑞士卷" href="./search.html">
-																	<span>瑞士卷</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="铜锣烧" href="./search.html">
-																	<span>铜锣烧</span>
-																</a>
-															</dd>
-														</dl>
-														<dl class="dl-sort">
-															<dt>
-																<span title="干笋">干笋</span>
-															</dt>
-															<dd>
-																<a title="蒸蛋糕" href="./search.html">
-																	<span>蒸蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="脱水蛋糕" href="./search.html">
-																	<span>脱水蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="瑞士卷" href="./search.html">
-																	<span>瑞士卷</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="铜锣烧" href="./search.html">
-																	<span>铜锣烧</span>
-																</a>
-															</dd>
-														</dl>
-														<dl class="dl-sort">
-															<dt>
-																<span title="鸭脖">鸭脖</span>
-															</dt>
-															<dd>
-																<a title="蒸蛋糕" href="./search.html">
-																	<span>蒸蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="脱水蛋糕" href="./search.html">
-																	<span>脱水蛋糕</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="瑞士卷" href="./search.html">
-																	<span>瑞士卷</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="软面包" href="./search.html">
-																	<span>软面包</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="马卡龙" href="./search.html">
-																	<span>马卡龙</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="千层饼" href="./search.html">
-																	<span>千层饼</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="甜甜圈" href="./search.html">
-																	<span>甜甜圈</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="蒸三明治" href="./search.html">
-																	<span>蒸三明治</span>
-																</a>
-															</dd>
-															<dd>
-																<a title="铜锣烧" href="./search.html">
-																	<span>铜锣烧</span>
-																</a>
-															</dd>
-														</dl>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<b class="arrow"></b>
-								</li>
 							</ul>
 						</div>
 					</div>
@@ -434,5 +193,18 @@
 	}
 </script>
 <script src="./js/quick_links.js"></script>
+<script src="./js/data.js"></script>
+<script>
+	$(function () {
+		var str = '';
+		for (var i = 0; i < data.categoryList.length; i++) {
+			str += '<li class="appliance js_toggle relative"><div class="category-info"><h3 class="category-name b-category-name"><a class="ml-22" title="点心">' + data.categoryList[i] + '</a></h3><em>&gt;</em></div><b class="arrow"></b></li>'
+		}
+		$('.category-list').html(str);
+		$('li.appliance').on('click', function () {
+
+		});
+	});
+</script>
 
 </html>

@@ -1497,7 +1497,7 @@ select {
     clear: both;
   }
   .am-avg-lg-4 > li {
-    width: 25%;
+    width: 20%;
   }
   .am-avg-lg-4 > li:nth-of-type(n) {
     clear: none;

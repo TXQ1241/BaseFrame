@@ -17,15 +17,15 @@ $('#login').loginPanel({
     forgetPwdText: '忘记密码',
     forgetPwdSrc: 'javascript:void(0)',
     submitFuc: function (account, password) {
-        ServerUtil.api('user-manager/login/', 'login', {
+        ServerUtil.api('change-web/login/', 'login', {
             account: account,
             password: password
         }, function (data) {
             if (data && data.status && data.status == '1') {
                 if (data.userType == '0') {
-                    window.location.href = window.location.origin + '/user-manager/user/view';
+                    window.location.href = window.location.origin + '/change-web/user/view';
                 } else {
-                    window.location.href = window.location.origin + '/user-manager/user/view';
+                    window.location.href = window.location.origin + '/change-web/user/view';
                 }
             } else {
                 $('.error-message').show();

@@ -19,7 +19,7 @@ layui.use(['table'], function () {
     };
     var userInfo;
     //获取用户信息
-    ServerUtil.api('user-manager/user/', 'getUserInfo', {}, function (data) {
+    ServerUtil.api('change-web/user/', 'getUserInfo', {}, function (data) {
         userInfo = data;
         $('#userLoginAccount').text(data.account);
         $('#userLogin').show();
@@ -52,7 +52,7 @@ layui.use(['table'], function () {
                 $('.table-edit-input').each(function (index, val) {
                     userInfo[val.dataset.type] = $(val).val();
                 });
-                ServerUtil.api('user-manager/user/', 'save', userInfo, function () {
+                ServerUtil.api('change-web/user/', 'save', userInfo, function () {
                     layer.close(index);
                 });
             },
@@ -64,13 +64,13 @@ layui.use(['table'], function () {
         });
     });
     $('#logout').on('click', function () {
-        window.location.href = window.location.origin + '/user-manager/login/logout';
+        window.location.href = window.location.origin + '/change-web/login/logout';
     });
     //第一个实例
     table.render({
         elem: '#datalist',
         // height: 315,
-        url: window.location.origin + '/user-manager/user/userList',
+        url: window.location.origin + '/change-web/user/userList',
         method: 'post',
         response: {
             statusCode: 1,
@@ -195,7 +195,7 @@ layui.use(['table'], function () {
             layer.confirm('真的删除么', {
                 skin: 'layui-layer-molv'
             }, function (index) {
-                ServerUtil.api('user-manager/user/', 'delete', {
+                ServerUtil.api('change-web/user/', 'delete', {
                     ids: data.id
                 }, function () {
                     // obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
@@ -231,7 +231,7 @@ layui.use(['table'], function () {
                     $('.table-edit-input').each(function (index, val) {
                         data[val.dataset.type] = $(val).val();
                     });
-                    ServerUtil.api('user-manager/user/', 'save', data, function () {
+                    ServerUtil.api('change-web/user/', 'save', data, function () {
                         //同步更新缓存对应的值
                         obj.update(data);
                         // tableReload();
@@ -274,7 +274,7 @@ layui.use(['table'], function () {
                 userIdsArr.push(val.id);
             });
             var userIdsStr = userIdsArr.join(',');
-            ServerUtil.api('user-manager/user/', 'delete', {
+            ServerUtil.api('change-web/user/', 'delete', {
                 ids: userIdsStr
             }, function () {
                 layer.close(index);
@@ -311,7 +311,7 @@ layui.use(['table'], function () {
                 $('.table-add-input').each(function (index, val) {
                     obj[val.dataset.type] = $(val).val();
                 });
-                ServerUtil.api('user-manager/user/', 'save', obj, function () {
+                ServerUtil.api('change-web/user/', 'save', obj, function () {
                     tableReload();
                     layer.close(index);
                 });

@@ -11,7 +11,7 @@ $('#register').registerPanel({
             placeholder: '您的账号和登录名',
             tip: '支持中文、字母、数字、"-"、"_"的组合，4-20个字符',
             isShow: true,
-            inputId: 'username',
+            inputId: 'account',
             type: 'text'
         },
         {
@@ -31,6 +31,13 @@ $('#register').registerPanel({
             type: 'password'              
         },
         {
+            label: '手机号',
+            placeholder: '请输入手机号',
+            isShow: true,
+            inputId: 'phoneNum',
+            type: 'text'                 
+        },
+        {
             label: '邮箱',
             placeholder: '建议使用常用邮箱',
             tip: '您可以用该邮箱登录和找回密码',
@@ -41,6 +48,11 @@ $('#register').registerPanel({
     ],
     submitBtnText: '立即注册',
     submitFuc: function (data) {
-
+        if (data.password == data.ackPassword) {
+            delete data.ackPassword;
+            ServerUtil.api('net-change-web/', 'user-save', data, function (data) {
+                
+            });
+        }
     }
 });

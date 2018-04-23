@@ -18,7 +18,7 @@ layui.use(['table'], function () {
         phoneNum: '手机号'
     };
     var userInfo;
-    ServerUtil.api('user-manager/user/', 'getUserInfo', {}, function (data) {
+    ServerUtil.api('change-web/user/', 'getUserInfo', {}, function (data) {
         userInfo = data;
         $('#userLoginAccount').text(data.account);
         $('#userLogin').show();
@@ -51,7 +51,7 @@ layui.use(['table'], function () {
                 $('.table-edit-input').each(function (index, val) {
                     userInfo[val.dataset.type] = $(val).val();
                 });
-                ServerUtil.api('user-manager/user/', 'save', userInfo, function () {
+                ServerUtil.api('change-web/user/', 'save', userInfo, function () {
                     layer.close(index);
                 });
             },
@@ -63,13 +63,13 @@ layui.use(['table'], function () {
         });
     });
     $('#logout').on('click', function () {
-        window.location.href = window.location.origin + '/user-manager/login/logout';
+        window.location.href = window.location.origin + '/change-web/login/logout';
     });
     //第一个实例
     table.render({
         elem: '#datalist',
         // height: 315,
-        url: window.location.origin + '/user-manager/user/userList',
+        url: window.location.origin + '/change-web/user/userList',
         method: 'post',
         response: {
             statusCode: 1,
@@ -215,7 +215,7 @@ layui.use(['table'], function () {
                     $('.table-edit-input').each(function (index, val) {
                         data[val.dataset.type] = $(val).val();
                     });
-                    ServerUtil.api('user-manager/user/', 'save', data, function () {
+                    ServerUtil.api('change-web/user/', 'save', data, function () {
                         //同步更新缓存对应的值
                         obj.update(data);
                         // tableReload();
